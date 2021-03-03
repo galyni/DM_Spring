@@ -1,7 +1,10 @@
 package business.models;
 
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDate;
 
+@Component
 public class Product {
     private String Nom;
     private String Code;
