@@ -2,44 +2,41 @@ package business.models;
 
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
+import java.util.Date;
 
-@Component
-public class Product {
-    private String Nom;
-    private String Code;
-    private int Quantite;
-    private LocalDate DatePeremption;
+@Entity
+@Table(name="Product")
+public class Product
+{
+    private Integer   id ;
+    private String    Nom ;
+    private String    Code ;
+    private int       Quantite ;
+    private Date      DatePeremption ;
 
-    public String getNom() {
-        return Nom;
-    }
+    public Product(){}
 
-    public void setNom(String nom) {
-        Nom = nom;
-    }
+    @Id
+    public Integer getId(){return id;}
+    @Basic(optional = false)
+    public String getNom() {return this.Nom;}
 
-    public String getCode() {
-        return Code;
-    }
+    public void setNom(String nom) {this.Nom = nom;}
+    @Basic(optional = false)
+    public String getCode() {return this.Code;}
 
-    public void setCode(String code) {
-        Code = code;
-    }
+    public void setCode(String code) {this.Code = code;}
+    @Basic(optional = false)
+    public int getQuantite() {return this.Quantite;}
 
-    public int getQuantite() {
-        return Quantite;
-    }
+    public void setQuantite(int quantite) {Quantite = quantite;}
+    @Basic(optional = false)
+    public Date getDatePeremption() {return this.DatePeremption;}
 
-    public void setQuantite(int quantite) {
-        Quantite = quantite;
-    }
-
-    public LocalDate getDatePeremption() {
-        return DatePeremption;
-    }
-
-    public void setDatePeremption(LocalDate datePeremption) {
-        DatePeremption = datePeremption;
-    }
+    public void setDatePeremption(Date datePeremption) {this.DatePeremption = datePeremption;}
 }
