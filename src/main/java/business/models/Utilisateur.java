@@ -1,6 +1,8 @@
 package business.models;
 
 
+import org.springframework.context.annotation.Primary;
+
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
