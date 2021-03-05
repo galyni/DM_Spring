@@ -11,19 +11,16 @@ import java.io.Serializable;
 @Table(name = "Utilisateur")
 public class Utilisateur implements Serializable {
 
-    public String id;
-    public String login;
+    public String email;
     public String password;
 
-    @Id
-    public String getId() { return id; }
-
     @Basic(optional = false)
-    public String getLogin() {
-        return this.login;
+    @Id
+    public String getEmail() {
+        return this.email;
     }
-    public void setLogin(String login) {
-        this.login = login;
+    public void setEmail(String login) {
+        this.email = login;
     }
 
     @Basic(optional = false)

@@ -11,7 +11,6 @@ import java.time.LocalDate;
 @Table(name = "Product")
 public class Product {
 
-    private Integer id;
     private String nom;
     @Basic(optional = false)
     private String code;
@@ -21,11 +20,6 @@ public class Product {
     private LocalDate datePeremption;
 
     @Basic(optional = false)
-    @Id
-    public Integer getId(){return id;}
-
-    public void setId(Integer id) { this.id = id;}
-
     public String getNom() {
         return nom;
     }
@@ -35,6 +29,7 @@ public class Product {
     }
 
     @Basic(optional = false)
+    @Id
     public String getCode() {
         return code;
     }
