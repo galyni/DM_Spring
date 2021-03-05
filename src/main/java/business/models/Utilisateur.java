@@ -13,16 +13,26 @@ import java.io.Serializable;
 @Table(name = "Utilisateur")
 public class Utilisateur implements Serializable {
 
+    public String name;
     public String email;
     public String password;
 
     @Basic(optional = false)
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    @Basic(optional = false)
     @Id
     public String getEmail() {
-        return this.email;
+        return email;
     }
-    public void setEmail(String login) {
-        this.email = login;
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Basic(optional = false)
