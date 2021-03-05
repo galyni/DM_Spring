@@ -1,22 +1,36 @@
 package business.models;
 
-public class Utilisateur {
-    public String Login;
-    public String Password;
 
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "Utilisateur")
+public class Utilisateur implements Serializable {
+
+    public String id;
+    public String login;
+    public String password;
+
+    @Id
+    public String getId() { return id; }
+
+    @Basic(optional = false)
     public String getLogin() {
-        return Login;
+        return this.login;
     }
-
     public void setLogin(String login) {
-        Login = login;
+        this.login = login;
     }
 
+    @Basic(optional = false)
     public String getPassword() {
-        return Password;
+        return this.password;
     }
-
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 }

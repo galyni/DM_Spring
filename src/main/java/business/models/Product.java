@@ -1,45 +1,63 @@
 package business.models;
 
-import org.springframework.stereotype.Component;
 
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
-@Component
+@Entity // il s’agit d’une classe à persister
+@Table(name = "Product")
 public class Product {
-    private String Nom;
-    private String Code;
-    private int Quantite;
-    private LocalDate DatePeremption;
+
+    private Integer id;
+    private String nom;
+    @Basic(optional = false)
+    private String code;
+    @Basic(optional = false)
+    private int quantite;
+    @Basic(optional = false)
+    private LocalDate datePeremption;
+
+    @Basic(optional = false)
+    @Id
+    public Integer getId(){return id;}
+
+    public void setId(Integer id) { this.id = id;}
 
     public String getNom() {
-        return Nom;
+        return nom;
     }
 
     public void setNom(String nom) {
-        Nom = nom;
+        this.nom = nom;
     }
 
+    @Basic(optional = false)
     public String getCode() {
-        return Code;
+        return code;
     }
 
     public void setCode(String code) {
-        Code = code;
+        this.code = code;
     }
 
+    @Basic(optional = false)
     public int getQuantite() {
-        return Quantite;
+        return quantite;
     }
 
     public void setQuantite(int quantite) {
-        Quantite = quantite;
+        this.quantite = quantite;
     }
 
+    @Basic(optional = false)
     public LocalDate getDatePeremption() {
-        return DatePeremption;
+        return datePeremption;
     }
 
     public void setDatePeremption(LocalDate datePeremption) {
-        DatePeremption = datePeremption;
+        this.datePeremption = datePeremption;
     }
 }
