@@ -26,18 +26,18 @@ public class Main {
         Transaction oTransaction = null;
 
         try {
-//           oTransaction  = oSession.beginTransaction();
-//           Product produit1 = new Product();
-//           produit1.setCode("17885541");
-//           produit1.setNom("Framboise");
-//           produit1.setQuantite(8966665);
-//           produit1.setDatePeremption(LocalDate.now());
-//
-//           oSession.save(produit1);
+           oTransaction  = oSession.beginTransaction();
+           Product produit1 = new Product();
+           produit1.setCode("17885541");
+           produit1.setNom("Framboise");
+           produit1.setQuantite(8966665);
+           produit1.setDatePeremption(LocalDate.now());
 
-            Product produit2 = (Product) oSession.load(Product.class, "123020137962");
-//           oSession.flush();
-//           oTransaction.commit();
+           oSession.save(produit1);
+
+            Product produit2 = (Product) oSession.find(Product.class, "123020137962");
+           oSession.flush();
+           oTransaction.commit();
             System.out.println(produit2.getNom());
 
         }catch (Exception e){
