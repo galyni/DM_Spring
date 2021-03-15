@@ -16,7 +16,7 @@
         <!-- Database connection settings -->
 		<!--MySQL DB -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost/B3</property>
+        <property name="connection.url">jdbc:mysql://localhost/springhibernate</property>
 
 		<!-- H2 DB -->
 <!--        <property name="connection.driver_class">org.h2.Driver</property>-->
@@ -29,7 +29,7 @@
 <!--        <property name="dialect">org.hibernate.dialect.H2Dialect</property>-->
 
         <property name="connection.username">root</property>
-        <property name="connection.password">MyPassword</property>
+        <property name="connection.password"></property>
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">1</property>
@@ -46,9 +46,10 @@
         <property name="show_sql">true</property>
 
         <!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">create</property>
-        <!-- OR - Only create the database schema if not existing yet - for sharing H2 with JDBC during dev -->
-	<!-- <property name="hbm2ddl.auto">update</property> -->
+<!--        <property name="hbm2ddl.auto">create</property>-->
+
+<!--         OR - Only create the database schema if not existing yet - for sharing H2 with JDBC during dev -->
+	 <property name="hbm2ddl.auto">update</property>
 
         <!-- Example of annotated entity class -->
         <mapping class="business.models.Product"/>

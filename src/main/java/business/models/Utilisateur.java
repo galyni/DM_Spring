@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "Utilisateur")
+@Table(name = "utilisateur")
 public class Utilisateur implements Serializable {
 
     public String name;

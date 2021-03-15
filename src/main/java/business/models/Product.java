@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import java.time.LocalDate;
 
 @Entity // il s’agit d’une classe à persister
-@Table(name = "Product")
+@Table(name = "product")
 public class Product {
 
     private String nom;
