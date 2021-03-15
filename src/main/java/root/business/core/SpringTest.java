@@ -1,4 +1,4 @@
-package business.core;
+package root.business.core;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

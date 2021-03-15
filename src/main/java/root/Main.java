@@ -1,5 +1,7 @@
-import business.core.ProductsService;
-import business.core.SpringTest;
+package root;
+
+import root.business.core.ProductsService;
+import root.business.core.SpringTest;
 import business.models.Product;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,7 +17,7 @@ import java.time.LocalDate;
 public class Main {
 
     public static void main(String[] args) {
-//        AbstractApplicationContext context = new AnnotationConfigApplicationContext(Main.class);
+//        AbstractApplicationContext context = new AnnotationConfigApplicationContext(root.Main.class);
 //
 //        //Byname Autowiring
 //        SpringTest test = context.getBean(SpringTest.class);

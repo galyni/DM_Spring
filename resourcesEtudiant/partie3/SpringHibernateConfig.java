@@ -1,4 +1,4 @@
-package org.epsi.b3.simplewebapp.spring.config;
+package root.conf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
+@ComponentScan("business.core")
 public class SpringHibernateConfig {
 
     @Bean
