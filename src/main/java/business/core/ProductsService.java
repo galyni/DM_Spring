@@ -1,9 +1,12 @@
 package business.core;
 
 import business.models.Product;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 
@@ -11,6 +14,7 @@ import java.util.ArrayList;
 public class ProductsService {
 
     public ProductsService() {
+
     }
 
     public void Test(){
@@ -32,8 +36,9 @@ public class ProductsService {
     public void UpdateProduct(Product product){
 
     }
-
-    public void CreateProduct(Product product){
+    @Transactional
+    public void CreateProduct(Product product, Session session){
+        session.save(product);
 
     }
 }

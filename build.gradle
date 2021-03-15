@@ -39,5 +39,5 @@ dependencies {
 
 
     // -- Partie III -- //
-    //implementation "org.springframework:spring-orm:${springframeworkVersion}"
+    implementation "org.springframework:spring-orm:${springframeworkVersion}"
 }
