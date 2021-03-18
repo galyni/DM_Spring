@@ -55,8 +55,9 @@ public class SpringHibernateConfig {
                 "hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 
         // Bind one session per request : configures SessionFactory.useCurrentSession()
-        hibernateProperties.setProperty(
-                "hibernate.current_session_context_class", "thread");
+        // Disabled because it interferes with hibernate session management
+//        hibernateProperties.setProperty(
+//                "hibernate.current_session_context_class", "thread");
 
         // Disable the second-level cache
         hibernateProperties.setProperty(

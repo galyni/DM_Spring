@@ -46,9 +46,9 @@ public class Main2 {
         ApplicationContext ctx = SpringApplication.run(Main2.class, args);
         ProductsService srv = ctx.getBean(ProductsService.class);
         Product produit1 = new Product();
-        produit1.setCode("25101999");
+        produit1.setCode("4321");
         produit1.setNom("Litchi");
-        produit1.setQuantite(493);
+        produit1.setQuantite(15);
         produit1.setDatePeremption(LocalDate.now());
 
        new Thread(() -> {
