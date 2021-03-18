@@ -1,4 +1,4 @@
-package business.models;
+package root.business.models;
 
 
 import javax.persistence.Basic;

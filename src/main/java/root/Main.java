@@ -2,7 +2,7 @@ package root;
 
 import root.business.core.ProductsService;
 import root.business.core.SpringTest;
-import business.models.Product;
+import root.business.models.Product;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -22,7 +22,7 @@ public class Main {
 //        //Byname Autowiring
 //        SpringTest test = context.getBean(SpringTest.class);
 //        test.Test();
-
+        System.out.println("Main numero 1");
         SessionFactory testBDD = new Configuration().configure().buildSessionFactory();
         Session oSession = testBDD.openSession();
         Transaction oTransaction = null;

@@ -10,6 +10,6 @@ public class SpringTest {
     private ProductsService srv;
 
     public void Test(){
-        srv.Test();
+        srv.test();
     }
 }
