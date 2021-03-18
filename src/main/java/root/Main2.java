@@ -26,7 +26,7 @@ public class Main2 {
 //            produit1.setCode("25101999");
 //            produit1.setNom("Litchi");
 //            produit1.setQuantite(493);
-//            produit1.setDatePeremption(LocalDate.now());
+//          sta produit1.setDatePeremption(LocalDate.now());
 //
 //            ProductsService service = context.getBean(ProductsService.class);
 //            SessionFactory sessionFactory = context.getBean(SessionFactory.class);
