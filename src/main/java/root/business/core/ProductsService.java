@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import java.util.List;
 
 @Service
-@Transactional
 public class ProductsService {
 
 
@@ -24,12 +27,23 @@ public class ProductsService {
         System.out.println("On est contents");
     }
 
-    public ArrayList<Product> getAllProducts(){
-        return null;
+    public List<Product> getAllProducts(){
+        Session session = sessionFactory.getCurrentSession();
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<Product> cq = cb.createQuery(Product.class);
+        Root<Product> rootEntry = cq.from(Product.class);
+        CriteriaQuery<Product> all = cq.select(rootEntry);
+
+        TypedQuery<Product> allQuery = session.createQuery(all);
+        return allQuery.getResultList();
+
     }
 
+
     public Product getProductById(int id){
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        Product product = session.find(Product.class, id);
+        return product;
     }
 
     public void deleteProduct(int id){
@@ -40,9 +54,9 @@ public class ProductsService {
 
     }
 
+    @Transactional
     public void createProduct(Product product){
         Session session = sessionFactory.getCurrentSession();
         session.save(product);
-
     }
 }

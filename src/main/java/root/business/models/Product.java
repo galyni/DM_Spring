@@ -55,4 +55,14 @@ public class Product {
     public void setDatePeremption(LocalDate datePeremption) {
         this.datePeremption = datePeremption;
     }
+
+    public Product(String nom, String code, int quantite, LocalDate datePeremption) {
+        this.nom = nom;
+        this.code = code;
+        this.quantite = quantite;
+        this.datePeremption = datePeremption;
+    }
+
+    public Product() {
+    }
 }
