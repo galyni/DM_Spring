@@ -1,4 +1,5 @@
 CREATE DATABASE IF NOT EXISTS SpringHibernate;
+USE SpringHibernate;
     CREATE TABLE IF NOT EXISTS Product(
         nom varchar(255) NOT NULL,
         code varchar(13) NOT NULL,

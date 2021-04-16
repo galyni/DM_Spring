@@ -32,7 +32,7 @@ public class SpringHibernateConfig {
 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost/springhibernate");
+        dataSource.setUrl("jdbc:mysql://localhost:3307/springhibernate");
         dataSource.setUsername("root");
         dataSource.setPassword("");
 
