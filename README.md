@@ -1,3 +1,15 @@
+# TODOs
+
+- Transactional : pk ça marche pas : Nico et David
+- Comptes utilisateurs, login..
+- Controllers and service : Nico et David
+- Views : Frédo et Quentin
+    - product detail
+    - add product form
+    - ...
+
+
+
 Spring Hibernate project
 =========================
 

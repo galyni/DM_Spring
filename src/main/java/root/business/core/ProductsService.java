@@ -27,6 +27,7 @@ public class ProductsService {
         System.out.println("On est contents");
     }
 
+    @Transactional
     public List<Product> getAllProducts(){
         Session session = sessionFactory.getCurrentSession();
         CriteriaBuilder cb = session.getCriteriaBuilder();

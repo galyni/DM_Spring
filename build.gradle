@@ -19,7 +19,6 @@ dependencies {
 
     // -- Partie II -- //
     // Uncomment the following line to add Hibernate to the project
-    implementation 'org.hibernate:hibernate-core:5.4.10.Final'
 
     // -- Partie III -- //
     implementation "org.springframework:spring-orm:${springframeworkVersion}"
