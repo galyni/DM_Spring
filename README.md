@@ -7,8 +7,9 @@
     - product detail
     - add product form
     - ...
-
-
+- Gestion d'erreurs (unicité BDD, objet non en base...)
+- Validation des formulaires
+- Authentification pour edit, update, delete...
 
 Spring Hibernate project
 =========================

@@ -14,6 +14,7 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Service
+@Transactional
 public class ProductsService {
 
 
@@ -27,7 +28,6 @@ public class ProductsService {
         System.out.println("On est contents");
     }
 
-    @Transactional
     public List<Product> getAllProducts(){
         Session session = sessionFactory.getCurrentSession();
         CriteriaBuilder cb = session.getCriteriaBuilder();
@@ -47,7 +47,6 @@ public class ProductsService {
         return product;
     }
 
-    @Transactional
     public void deleteProduct(String id){
         Session session = sessionFactory.getCurrentSession();
         Product product = getProductById(id);
@@ -55,10 +54,10 @@ public class ProductsService {
     }
 
     public void updateProduct(Product product){
-
+        Session session = sessionFactory.getCurrentSession();
+        session.update(product);
     }
 
-    @Transactional
     public void createProduct(Product product){
         Session session = sessionFactory.getCurrentSession();
         session.save(product);
