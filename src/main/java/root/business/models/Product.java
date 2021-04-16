@@ -12,11 +12,9 @@ import java.time.LocalDate;
 public class Product {
 
     private String nom;
-    @Basic(optional = false)
     private String code;
-    @Basic(optional = false)
+    double prix;
     private int quantite;
-    @Basic(optional = false)
     private LocalDate datePeremption;
 
     @Basic(optional = false)
@@ -48,17 +46,28 @@ public class Product {
     }
 
     @Basic(optional = false)
+    public double getPrix() {
+        return prix;
+    }
+
+    public void setPrix(double prix) {
+        this.prix = prix;
+    }
+
+    @Basic(optional = false)
     public LocalDate getDatePeremption() {
         return datePeremption;
     }
+
 
     public void setDatePeremption(LocalDate datePeremption) {
         this.datePeremption = datePeremption;
     }
 
-    public Product(String nom, String code, int quantite, LocalDate datePeremption) {
+    public Product(String nom, String code, double prix, int quantite, LocalDate datePeremption) {
         this.nom = nom;
         this.code = code;
+        this.prix = prix;
         this.quantite = quantite;
         this.datePeremption = datePeremption;
     }

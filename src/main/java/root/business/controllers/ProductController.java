@@ -41,7 +41,7 @@ public class ProductController {
     public ModelAndView createProduct(){
 //    public ModelAndView createProduct(@ModelAttribute Product product){
         //Mock
-        Product product = new Product("SpringPueDuCul", "ABCDEFGHI", 12000, LocalDate.now());
+        Product product = new Product("SpringPueDuCul", "ABCDEFGHI", 15.5, 12000, LocalDate.now());
 
         // For realsies
         srv.createProduct(product);
