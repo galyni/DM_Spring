@@ -1,16 +1,15 @@
 package root.business.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import root.business.core.ProductsService;
 import root.business.models.Product;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.util.List;
+
 
 @Controller
 public class ProductController {
@@ -37,15 +36,31 @@ public class ProductController {
         return new ModelAndView("redirect:/GetProductsList");
     }
 
-    @RequestMapping(path="/CreateProduct")
-    public ModelAndView createProduct(){
-//    public ModelAndView createProduct(@ModelAttribute Product product){
-        //Mock
-        Product product = new Product("SpringPueDuCul", "ABCDEFGHI", 15.5, 12000, LocalDate.now());
 
-        // For realsies
-        srv.createProduct(product);
-        return new ModelAndView("redirect:/GetProductsList");
+    @RequestMapping(path="/CreateProduct", method=RequestMethod.GET)
+    public ModelAndView goToProductForm(){
+
+        //Product product = new Product();
+        ModelAndView result = new ModelAndView("productCreate");
+        //result.addObject("product", product);
+        return result;
+    }
+
+
+    @RequestMapping(path="/CreateProduct", method=RequestMethod.POST)
+    public ModelAndView createProduct(@ModelAttribute Product product){
+//    public ModelAndView createProduct(@ModelAttribute Product product){
+//        String name = request.getParameter("Nom");
+//        String EAN = request.getParameter("EAN");
+//        String prix = request.getParameter("price");
+//        String quantity = request.getParameter("quantity");
+
+        if (product != null) {
+            //Product product = new Product(name, EAN, Double.parseDouble(prix), Integer.parseInt(quantity), LocalDate.now());
+            product.setDatePeremption(LocalDate.now());
+            srv.createProduct(product);
+        }
+        return new ModelAndView("productCreate");
     }
 
     @RequestMapping(path="/UpdateProduct")

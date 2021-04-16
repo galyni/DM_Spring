@@ -1,6 +1,5 @@
 package root.business.models;
 
-
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;

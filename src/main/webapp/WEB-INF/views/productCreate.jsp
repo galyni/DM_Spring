@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -13,7 +14,7 @@
         <jsp:include page="_menu.jsp"></jsp:include>
         <h1 class="text-center mt-5 mb-5">Detail du produit : <%-- {produit} --%></h1>
         <div class="container">
-
+            <jsp:include page="_form.jsp"></jsp:include>
         </div>
     </body>
 </html>

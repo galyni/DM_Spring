@@ -16,12 +16,12 @@ USE SpringHibernate;
         PRIMARY KEY (mail)
     );
 
-    INSERT INTO PRODUCT(nom, code , quantite, datePeremption) VALUES ('Banane', '978020137962', 12 , 1.99,'2021-04-20');
-    INSERT INTO PRODUCT(nom, code , quantite, datePeremption) VALUES ('Clémentine', '7412589634561', 21 , 1.99,'2021-04-20');
-    INSERT INTO PRODUCT(nom, code , quantite, datePeremption) VALUES ('Orange', '369020137962', 3 , 1.99,'2021-04-20');
-    INSERT INTO PRODUCT(nom, code , quantite, datePeremption) VALUES ('Sardines', '123020137962', 23 , 1.99,'2021-04-20');
-    INSERT INTO PRODUCT(nom, code , quantite, datePeremption) VALUES ('Framboises', '869020137962', 5 , 1.99,'2021-08-12');
-    INSERT INTO PRODUCT(nom, code , quantite, datePeremption) VALUES ('Raisins', '222020137962', 1 , 1.99,'2021-05-1');
+    INSERT INTO PRODUCT(nom, code , quantite, prix, datePeremption) VALUES ('Banane', '978020137962', 12 , 1.99,'2021-04-20');
+    INSERT INTO PRODUCT(nom, code , quantite, prix, datePeremption) VALUES ('Clémentine', '7412589634561', 21 , 1.99,'2021-04-20');
+    INSERT INTO PRODUCT(nom, code , quantite, prix, datePeremption) VALUES ('Orange', '369020137962', 3 , 1.99,'2021-04-20');
+    INSERT INTO PRODUCT(nom, code , quantite, prix, datePeremption) VALUES ('Sardines', '123020137962', 23 , 1.99,'2021-04-20');
+    INSERT INTO PRODUCT(nom, code , quantite, prix, datePeremption) VALUES ('Framboises', '869020137962', 5 , 1.99,'2021-08-12');
+    INSERT INTO PRODUCT(nom, code , quantite, prix, datePeremption) VALUES ('Raisins', '222020137962', 1 , 1.99,'2021-05-1');
 
     INSERT INTO Utilisateur(login, mail, password) VALUES ('Orayas', 'orayas@gmail.com','admin');
     INSERT INTO Utilisateur(login, mail, password) VALUES ('cpt_flynt', 'cpt_flynt@gmail.com','admin');
