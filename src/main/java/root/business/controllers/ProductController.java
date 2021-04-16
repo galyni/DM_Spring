@@ -2,6 +2,7 @@ package root.business.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import root.business.core.ProductsService;
 import root.business.models.Product;
@@ -25,5 +26,10 @@ public class ProductController {
         result.addObject("productList", productList);
         return result;
     }
-
+    @GetMapping(path="/DeleteProduct")
+    public ModelAndView deleteProduct(String id)
+    {
+        srv.deleteProduct(id);
+        return new ModelAndView("redirect:/GetProductsList");
+    }
 }

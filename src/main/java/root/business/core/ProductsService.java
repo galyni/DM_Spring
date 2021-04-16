@@ -41,14 +41,17 @@ public class ProductsService {
     }
 
 
-    public Product getProductById(int id){
+    public Product getProductById(String id){
         Session session = sessionFactory.getCurrentSession();
         Product product = session.find(Product.class, id);
         return product;
     }
 
-    public void deleteProduct(int id){
-
+    @Transactional
+    public void deleteProduct(String id){
+        Session session = sessionFactory.getCurrentSession();
+        Product product = getProductById(id);
+        session.delete(product);
     }
 
     public void updateProduct(Product product){
