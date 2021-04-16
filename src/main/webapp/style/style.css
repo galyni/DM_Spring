@@ -1,0 +1,10 @@
+
+
+.navbar-color {
+    background-color: #81E3BB;
+}
+
+.navbar-color nav div a div div a:hover {
+    background-color: #555;
+    border-radius: 8px;
+}
