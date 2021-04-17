@@ -12,3 +12,15 @@
 button:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
+
+div a.boutons-menu{
+    border-radius: 8px;
+    color:#ffff;
+    font-weight: bold;
+}
+
+div a.boutons-menu:hover{
+    border-radius: 8px;
+    background-color: #5ac69a;
+    font-weight: bold;
+}
