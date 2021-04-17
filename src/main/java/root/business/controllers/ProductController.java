@@ -1,6 +1,8 @@
 package root.business.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import root.business.core.ProductsService;
@@ -41,19 +43,27 @@ public class ProductController {
     public ModelAndView goToProductForm(){
 
         //Product product = new Product();
-        ModelAndView result = new ModelAndView("productCreate");
+//        ModelAndView result = new ModelAndView("productCreate"); //Avant Frédo
         //result.addObject("product", product);
-        return result;
+//        return result; //Avant Frédo
+
+        return new ModelAndView("productCreate", "product", new Product());
     }
 
 
     @RequestMapping(path="/CreateProduct", method=RequestMethod.POST)
-    public ModelAndView createProduct(@ModelAttribute Product product){
-//    public ModelAndView createProduct(@ModelAttribute Product product){
+    public ModelAndView createProduct(@ModelAttribute("product") Product product, BindingResult result, ModelMap model){
+//    public ModelAndView createProduct(@ModelAttribute Product product){ //Avant Frédo
 //        String name = request.getParameter("Nom");
 //        String EAN = request.getParameter("EAN");
 //        String prix = request.getParameter("price");
 //        String quantity = request.getParameter("quantity");
+
+//        Version doc, à voir si il faut faire d'une autre façon
+        String name = product.getNom();
+        String EAN = product.getCode();
+        double prix = product.getPrix();
+        int quantity = product.getQuantite();
 
         if (product != null) {
             //Product product = new Product(name, EAN, Double.parseDouble(prix), Integer.parseInt(quantity), LocalDate.now());

@@ -40,7 +40,7 @@
                 </tbody>
             </table>
             <div class="block-center">
-                <button href="CreateProduct" type="button" class="btn navbar-color btn-lg btn-block">Ajouter un produit</button>
+                <button href="${pageContext.request.contextPath}/CreateProduct" type="button" class="btn navbar-color btn-lg btn-block">Ajouter un produit</button>
             </div>
         </div>
     </body>
