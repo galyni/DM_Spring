@@ -10,6 +10,12 @@
 - Gestion d'erreurs (unicité BDD, objet non en base...)
 - Validation des formulaires
 - Authentification pour edit, update, delete...
+- Faire une page en cas d'erreur ("Oups nous ne sommes pas parvenus à trouver ce que vous recherchez")
+
+Front : 
+
+- Faire un Hover pour les boutons verts de la page d'accueil
+- Faire un pop quand le produit vient d'être supprimé
 
 Spring Hibernate project
 =========================

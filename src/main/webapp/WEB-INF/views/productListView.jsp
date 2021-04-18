@@ -30,17 +30,17 @@
                             <td>${product.nom}</td>
                             <td>${product.prix}€</td>
                             <td>
-                                <button href="EditProduct?id=${product.code}" type="button" class="btn navbar-color btn-block">Modifier</button>
+                                <a href="${pageContext.request.contextPath}/UpdateProduct?id=${product.code}" type="button" class="btn navbar-color btn-block">Modifier</a>
                             </td>
                             <td>
-                                <button href="DeleteProduct?id=${product.code}" type="button" class="btn btn-danger btn-block">Supprimer</button>
+                                <a href="${pageContext.request.contextPath}/DeleteProduct?id=${product.code}" type="button" class="btn btn-danger btn-block">Supprimer</a>
                             </td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
             <div class="block-center">
-                <button href="${pageContext.request.contextPath}/CreateProduct" type="button" class="btn navbar-color btn-lg btn-block">Ajouter un produit</button>
+                <a href="${pageContext.request.contextPath}/CreateProduct" type="button" class="btn navbar-color btn-lg btn-block">Ajouter un produit</a>
             </div>
         </div>
     </body>
