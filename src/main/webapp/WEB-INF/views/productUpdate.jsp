@@ -22,7 +22,7 @@
             </div>
             <div class="col-md-3 mb-3">
                 <form:label path="code">EAN</form:label>
-                <form:input type="text" class="form-control" text="${product.code}" name="EAN" placeholder="EAN" path="code"/>
+                <form:input type="text" class="form-control" text="${product.code}" name="EAN" placeholder="EAN" path="code" disabled="true"/>
             </div>
             <div class="col-md-3 mb-3">
                 <form:label path="prix">Prix</form:label>
