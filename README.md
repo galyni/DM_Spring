@@ -11,7 +11,7 @@
 - Validation des formulaires
 - Authentification pour edit, update, delete...
 - Faire une page en cas d'erreur ("Oups nous ne sommes pas parvenus à trouver ce que vous recherchez")
-
+- Si on a la déter, faire des hash pour les mots de passe
 Front : 
 
 - Faire un Hover pour les boutons verts de la page d'accueil

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import root.business.core.ProductsService;
 import root.business.models.Product;
+import root.business.models.Utilisateur;
+
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
@@ -17,6 +19,7 @@ import java.util.List;
 public class ProductController {
 
     private ProductsService srv;
+
 
     public ProductController(ProductsService srv) {
         this.srv = srv;
@@ -113,5 +116,6 @@ public class ProductController {
         }
         return new ModelAndView("redirect:/GetProductsList");
     }
+
 
 }

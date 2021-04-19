@@ -1,7 +1,5 @@
-package business.models;
+package root.business.models;
 
-
-import org.springframework.context.annotation.Primary;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -13,33 +11,50 @@ import java.io.Serializable;
 @Table(name = "utilisateur")
 public class Utilisateur implements Serializable {
 
-    public String name;
-    public String email;
-    public String password;
+    private String login;
+    private String mail;
+    private String password;
+
+
+    public Utilisateur(String name, String mail, String password) {
+        this.login = name;
+        this.mail = mail;
+        this.password = password;
+    }
+
+    public Utilisateur(){
+
+    }
 
     @Basic(optional = false)
-    public String getName() {
-        return name;
+    public String getLogin() {
+        return login;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLogin(String login) {
+        this.login = login;
     }
+
     @Basic(optional = false)
     @Id
-    public String getEmail() {
-        return email;
+    public String getMail() {
+        return mail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     @Basic(optional = false)
     public String getPassword() {
-        return this.password;
+        return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
+
+
+
+
 }
