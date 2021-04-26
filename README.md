@@ -1,21 +1,23 @@
 # TODOs
 
 - Transactional : pk ça marche pas : Nico et David
-- Comptes utilisateurs, login..
+- Comptes utilisateurs, login, cookies : Nico (ne pas oublier la deconnexion)  
 - Controllers and service : Nico et David
 - Views : Frédo et Quentin
     - product detail
     - add product form
     - ...
 - Gestion d'erreurs (unicité BDD, objet non en base...)
-- Validation des formulaires
+- Validation des formulaires (pk prix par 0.1 et pk pas le droit à 36.1 ?)
 - Authentification pour edit, update, delete...
 - Faire une page en cas d'erreur ("Oups nous ne sommes pas parvenus à trouver ce que vous recherchez")
 - Si on a la déter, faire des hash pour les mots de passe
-Front : 
 
+Front : 
 - Faire un Hover pour les boutons verts de la page d'accueil
-- Faire un pop quand le produit vient d'être supprimé
+- Faire un toast quand le produit vient d'être supprimé
+- Factorisation des pages
+- Se poser la question du mail comme clé primaire
 
 Spring Hibernate project
 =========================

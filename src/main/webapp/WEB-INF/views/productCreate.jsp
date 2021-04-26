@@ -12,7 +12,7 @@
     </head>
     <body>
         <jsp:include page="_menu.jsp"></jsp:include>
-        <h1 class="text-center mt-5 mb-5">Création d'un produit du produit : <%-- {produit} --%></h1>
+        <h1 class="text-center mt-5 mb-5">Création d'un produit : <%-- {produit} --%></h1>
         <div class="container">
             <jsp:include page="_form.jsp"></jsp:include>
         </div>
