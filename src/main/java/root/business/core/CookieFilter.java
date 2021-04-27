@@ -22,18 +22,15 @@ public class CookieFilter implements Filter {
  
     public CookieFilter()
     {
-        String fred ="pouchan";
     }
  
     @Override
     public void init(FilterConfig fConfig)
     {
-        String autreFred = "dopplePouchan";
     }
  
     @Override
     public void destroy() {
-        String toujoursFred = "claire";
     }
  
     @Override
@@ -44,12 +41,11 @@ public class CookieFilter implements Filter {
         HttpSession session = req.getSession();
  
 	// To retrieve / store cookies :
-	Cookie[] cookies = req.getCookies();
-	for(Cookie cookie : cookies){
-	    if(cookie.getName().equals("utilisateur")){
-	        request.setAttribute("connexion", true);
+	    Cookie cookie = CookieHandler.getCookie(req);
+	    if(cookie != null)
+        {
+            // TODO @Nico fais ce que tu veux des cookies ici
         }
-    }
 	//
 	// new Cookie(...)
 	// response.addCookie(...)
