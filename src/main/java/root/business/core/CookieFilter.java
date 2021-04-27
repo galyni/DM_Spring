@@ -20,17 +20,20 @@ public class CookieFilter implements Filter {
     //@Autowired
     //private UserManager userManager;
  
-    public CookieFilter() {
+    public CookieFilter()
+    {
+        String fred ="pouchan";
     }
  
     @Override
-    public void init(FilterConfig fConfig) {
- 
+    public void init(FilterConfig fConfig)
+    {
+        String autreFred = "dopplePouchan";
     }
  
     @Override
     public void destroy() {
- 
+        String toujoursFred = "claire";
     }
  
     @Override

@@ -11,15 +11,19 @@ import java.io.Serializable;
 @Table(name = "utilisateur")
 public class Utilisateur implements Serializable {
 
-    private String login;
+    private String firstName;
     private String mail;
     private String password;
+    private String billingAddress;
+    private String userName;
 
 
-    public Utilisateur(String name, String mail, String password) {
-        this.login = name;
+    public Utilisateur(String firstName, String mail, String password, String billingAddress, String userName) {
+        this.firstName = firstName;
         this.mail = mail;
         this.password = password;
+        this.billingAddress = billingAddress;
+        this.userName = userName;
     }
 
     public Utilisateur(){
@@ -27,12 +31,11 @@ public class Utilisateur implements Serializable {
     }
 
     @Basic(optional = false)
-    public String getLogin() {
-        return login;
+    public String getFirstName() {
+        return firstName;
     }
-
-    public void setLogin(String login) {
-        this.login = login;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     @Basic(optional = false)
@@ -40,7 +43,6 @@ public class Utilisateur implements Serializable {
     public String getMail() {
         return mail;
     }
-
     public void setMail(String mail) {
         this.mail = mail;
     }
@@ -49,12 +51,16 @@ public class Utilisateur implements Serializable {
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
 
+    @Basic(optional = false)
+    public String getUserName() { return this.userName; }
+    public void setUserName(String userName) { this.userName = userName; }
 
-
+    @Basic(optional = false)
+    public String getBillingAddress(){return billingAddress;}
+    public void setBillingAddress(String billingAddress){this.billingAddress = billingAddress;}
 
 }

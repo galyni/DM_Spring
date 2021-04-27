@@ -9,7 +9,8 @@
                <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/GetProductsList">Liste des produits</a>
                <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/CreateProduct">Créer un produit</a>
                <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/userInfo">Mes infos</a>
-               <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/register">Login</a>
+               <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/login">Login</a>
+               <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/register">S'enregistrer</a>
             </div>
          </div>
       </div>

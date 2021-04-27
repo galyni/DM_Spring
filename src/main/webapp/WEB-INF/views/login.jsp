@@ -14,30 +14,18 @@
 <jsp:include page="_menu.jsp"></jsp:include>
 <h1 class="text-center mt-5 mb-5">Création d'un compte : <%-- {produit} --%></h1>
 <div class="container">
-    <form:form method="POST" action="/register" modelAttribute="utilisateur">
+    <form:form method="POST" action="/login" modelAttribute="utilisateur">
         <div class="form-row">
-            <div class="col-md-3 mb-3">
-                <form:label path="userName">Pseudo</form:label>
-                <form:input type="text" class="form-control" text="${utilisateur.userName}" name="userName"  placeholder="Pseudonyme" path="userName"/>
-            </div>
-            <div class="col-md-6 mb-3">
-                <form:label path="firstName">Login</form:label>
-                <form:input type="text" class="form-control" text="${utilisateur.firstName}" name="firstName" placeholder="Prenom" path="firstName"/>
-            </div>
             <div class="col-md-3 mb-3">
                 <form:label path="mail">Email</form:label>
                 <form:input type="email" class="form-control" text="${utilisateur.mail}" name="mail" placeholder="Adresse mail" path="mail"/>
-            </div>
-            <div class="col-md-3 mb-3">
-                <form:label path="billingAddress">Adresse postale</form:label>
-                <form:input type="text" class="form-control" text="${utilisateur.billingAddress}" name="billingAddress" placeholder="Adresse postale" path="billingAddress"/>
             </div>
             <div class="col-md-3 mb-3">
                 <form:label path="password">Password</form:label>
                 <form:input type="password" class="form-control" text="${utilisateur.password}" name="password"  placeholder="Password" path="password"/>
             </div>
         </div>
-        <button class="btn btn-primary" type="submit">Valider la création du compte</button>
+        <button class="btn btn-primary" type="submit">Me connecter</button>
         <a href="${pageContext.request.contextPath}/GetProductsList" type="button" class="btn btn-danger btn-block">Annuler la création</a>
     </form:form>
 
