@@ -10,7 +10,9 @@ USE SpringHibernate;
     );
 
     CREATE TABLE IF NOT EXISTS Utilisateur(
-        login varchar(20) NOT NULL,
+        firstName varchar(50) NOT NULL,
+        userName varchar(20) NOT NULL,
+        billingAddress varchar (300) NOT NULL,
         mail varchar(255) NOT NULL,
         password varchar(250) NOT NULL,
         PRIMARY KEY (mail)
@@ -23,8 +25,8 @@ USE SpringHibernate;
     INSERT INTO PRODUCT(nom, code , quantite, prix, datePeremption) VALUES ('Framboises', '869020137962', 5 , 1.99,'2021-08-12');
     INSERT INTO PRODUCT(nom, code , quantite, prix, datePeremption) VALUES ('Raisins', '222020137962', 1 , 1.99,'2021-05-1');
 
-    INSERT INTO Utilisateur(login, mail, password) VALUES ('Orayas', 'orayas@gmail.com','admin');
-    INSERT INTO Utilisateur(login, mail, password) VALUES ('cpt_flynt', 'cpt_flynt@gmail.com','admin');
-    INSERT INTO Utilisateur(login, mail, password) VALUES ('froggy', 'froggy@gmail.com','admin');
-    INSERT INTO Utilisateur(login, mail, password) VALUES ('testos', 'testos@gmail.com','admin');
+    INSERT INTO Utilisateur(firstName, mail, password, userName, billingAddress) VALUES ('Nicolas', 'nicosss@gmail.com','admin', 'Orayas', '3 chemin de l''impératif catégorique');
+    INSERT INTO Utilisateur(firstName, mail, password, userName, billingAddress) VALUES ('David', 'cpt_flynt@gmail.com','admin', 'cpt_flynt', '2 ruelle des blagues vaseuses');
+    INSERT INTO Utilisateur(firstName, mail, password, userName, billingAddress) VALUES ('Quentin', 'froggy@gmail.com','admin', 'froggy', '3 avenue de la saciété');
+    INSERT INTO Utilisateur(firstName, mail, password, userName, billingAddress) VALUES ('Frederic', 'orayas@gmail.com','admin', 'testos', '5 boulevard des marins d''eau douce');
 
