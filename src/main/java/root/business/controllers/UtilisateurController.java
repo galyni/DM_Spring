@@ -1,5 +1,7 @@
 package root.business.controllers;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,14 +17,23 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class UtilisateurController {
 
     private UtilisateurService srv;
 
-    public UtilisateurController(UtilisateurService srv) {
+    public UtilisateurController(UtilisateurService srv)
+    {
         this.srv = srv;
+    }
+
+    @RequestMapping(path="/disconnect", method=RequestMethod.GET)
+    public ModelAndView disconnect(HttpServletRequest request)
+    {
+        request.getSession().setAttribute("connected", false);
+        return new ModelAndView("redirect:/GetProductsList");
     }
 
     @RequestMapping(path="/login", method=RequestMethod.GET)
@@ -38,10 +49,10 @@ public class UtilisateurController {
     }
 
     @RequestMapping(path="login", method=RequestMethod.POST)
-    public ModelAndView signIn(@ModelAttribute("utilisateur") Utilisateur utilisateur, ServletRequest request, ServletResponse response)
+    public ModelAndView signIn(@ModelAttribute("utilisateur") Utilisateur utilisateur, HttpServletRequest request, ServletResponse response)
     {
         if (utilisateur != null) {
-
+            request.getSession().setAttribute("connected", true);
             // TODO connect user if exist
         }
         return new ModelAndView("redirect:/GetProductsList");//TODO redirect elsewhere (landing page?)
@@ -54,14 +65,14 @@ public class UtilisateurController {
     }
 
     @RequestMapping(path="/register", method=RequestMethod.POST)
-    public ModelAndView createUser(@ModelAttribute("utilisateur") Utilisateur utilisateur, HttpServletResponse response){
+    public ModelAndView createUser(@ModelAttribute("utilisateur") Utilisateur utilisateur, HttpServletRequest request, HttpServletResponse response){
 
         String firstName = utilisateur.getFirstName();
         String mail = utilisateur.getMail();
         String password = utilisateur.getPassword();
         String userName = utilisateur.getUserName();
         String billingAddress = utilisateur.getBillingAddress();
-
+        request.getSession().setAttribute("connected", true);
         CookieHandler.createCookie(utilisateur, response);
 
         if (utilisateur != null) {

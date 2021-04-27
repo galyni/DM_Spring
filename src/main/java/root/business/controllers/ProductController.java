@@ -11,6 +11,7 @@ import root.business.models.Utilisateur;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -26,10 +27,11 @@ public class ProductController {
     }
 
     @GetMapping(path="/GetProductsList")
-    public ModelAndView getProductsList(){
+    public ModelAndView getProductsList(HttpServletRequest request){
         List<Product> productList = srv.getAllProducts();
         ModelAndView result = new ModelAndView("productListView");
         result.addObject("productList", productList);
+        request.setAttribute("connected", request.getSession().getAttribute("connected") != null && (boolean)request.getSession().getAttribute("connected"));
         return result;
     }
 
@@ -80,5 +82,11 @@ public class ProductController {
         return new ModelAndView("redirect:/GetProductsList");
     }
 
-
+    private void checkConnection(HttpServletRequest request)
+    {
+        if((boolean)request.getSession().getAttribute("connected"))
+        {
+            request.setAttribute("connected", true);
+        }
+    }
 }
