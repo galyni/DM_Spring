@@ -10,11 +10,11 @@
             <div class="navbar-nav">
                <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/GetProductsList">Liste des produits</a>
                <c:if test="${!connected}">
-                  <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/userInfo">Mes infos</a>
-                  <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/CreateProduct">Créer un produit</a>
                   <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/login">Login</a>
                </c:if>
                <c:if test="${connected}">
+                  <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/CreateProduct">Créer un produit</a>
+                  <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/userInfo">Mes infos</a>
                   <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/disconnect">Se deconnecter</a>
                </c:if>
                <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/register">S'enregistrer</a>

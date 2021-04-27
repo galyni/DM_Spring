@@ -29,6 +29,13 @@ public class UtilisateurController {
         this.srv = srv;
     }
 
+    @RequestMapping(path="/userInfo", method=RequestMethod.GET)
+    public ModelAndView goToInfoPage(HttpServletRequest request)
+    {
+        //Utilisateur user = srv.getUtilisateurById(CookieHandler.getCookie(request).getValue()) ;
+        return new ModelAndView("userInfo", "utilisateur", srv.getUtilisateurById(CookieHandler.getCookie(request).getValue()) );
+    }
+
     @RequestMapping(path="/disconnect", method=RequestMethod.GET)
     public ModelAndView disconnect(HttpServletRequest request)
     {
