@@ -1,5 +1,6 @@
 package root.business.controllers;
 
+import org.apache.catalina.filters.ExpiresFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.util.List;
 
-
+//@EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
 @Controller
 public class ProductController {
 
@@ -44,20 +45,29 @@ public class ProductController {
     }
 
     @GetMapping(path="/DeleteProduct")
-    public ModelAndView deleteProduct(String id)
+    public ModelAndView deleteProduct(String id, HttpServletRequest request)
     {
+        if (redirection(request)) {
+        return new ModelAndView("redirect:/GetProductsList");
+        }
         srv.deleteProduct(id);
         return new ModelAndView("redirect:/GetProductsList");
     }
 
     @RequestMapping(path="/CreateProduct", method=RequestMethod.GET)
-    public ModelAndView goToProductForm(){
+    public ModelAndView goToProductForm(HttpServletRequest request){
+        if (redirection(request)) {
+            return new ModelAndView("redirect:/GetProductsList");
+        }
         return new ModelAndView("productCreate", "product", new Product());
     }
 
 
     @RequestMapping(path="/CreateProduct", method=RequestMethod.POST)
-    public ModelAndView createProduct(@ModelAttribute("product") Product product){
+    public ModelAndView createProduct(@ModelAttribute("product") Product product, HttpServletRequest request){
+        if (redirection(request)) {
+            return new ModelAndView("redirect:/GetProductsList");
+        }
         if (product != null) {
             product.setDatePeremption(LocalDate.now());
             srv.createProduct(product);
@@ -67,14 +77,19 @@ public class ProductController {
 
 
     @RequestMapping(path="/UpdateProduct", method=RequestMethod.GET)
-    public ModelAndView goToProductUpdateForm(String id){
+    public ModelAndView goToProductUpdateForm(String id, HttpServletRequest request){
+        if (redirection(request)) {
+            return new ModelAndView("redirect:/GetProductsList");
+        }
         return new ModelAndView("productUpdate", "product", srv.getProductById(id));
     }
 
 
     @RequestMapping(path="/UpdateProduct", method=RequestMethod.POST)
-    public ModelAndView updateProduct(@ModelAttribute("product") Product product){
-
+    public ModelAndView updateProduct(@ModelAttribute("product") Product product, HttpServletRequest request){
+        if (redirection(request)) {
+            return new ModelAndView("redirect:/GetProductsList");
+        }
         if (product != null) {
             product.setDatePeremption(LocalDate.now());
             srv.updateProduct(product);
@@ -88,5 +103,15 @@ public class ProductController {
         {
             request.setAttribute("connected", true);
         }
+    }
+
+    private boolean redirection(HttpServletRequest request)
+    {
+        if (request.getSession().getAttribute("connected") == null) {
+            return true;
+        } else if (!(boolean)request.getSession().getAttribute("connected")){
+            return true;
+        };
+        return false;
     }
 }

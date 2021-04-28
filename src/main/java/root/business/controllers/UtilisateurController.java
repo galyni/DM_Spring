@@ -32,6 +32,9 @@ public class UtilisateurController {
     @RequestMapping(path="/userInfo", method=RequestMethod.GET)
     public ModelAndView goToInfoPage(HttpServletRequest request)
     {
+        if (redirection(request)) {
+            return new ModelAndView("redirect:/login");
+        }
         //Utilisateur user = srv.getUtilisateurById(CookieHandler.getCookie(request).getValue()) ;
         return new ModelAndView("userInfo", "utilisateur", srv.getUtilisateurById(CookieHandler.getCookie(request).getValue()) );
     }
@@ -56,11 +59,12 @@ public class UtilisateurController {
     }
 
     @RequestMapping(path="login", method=RequestMethod.POST)
-    public ModelAndView signIn(@ModelAttribute("utilisateur") Utilisateur utilisateur, HttpServletRequest request, ServletResponse response)
+    public ModelAndView signIn(@ModelAttribute("utilisateur") Utilisateur utilisateur, HttpServletRequest request, HttpServletResponse response)
     {
         if (utilisateur != null) {
             request.getSession().setAttribute("connected", true);
-            // TODO connect user if exist
+            CookieHandler.createCookie(utilisateur, response );
+            //TODO connect user if exist
         }
         return new ModelAndView("redirect:/GetProductsList");//TODO redirect elsewhere (landing page?)
     }
@@ -87,5 +91,15 @@ public class UtilisateurController {
             srv.createUtilisateur(utilisateur);
         }
         return new ModelAndView("redirect:/GetProductsList");
+    }
+
+    private boolean redirection(HttpServletRequest request)
+    {
+        if (request.getSession().getAttribute("connected") == null) {
+            return true;
+        } else if (!(boolean)request.getSession().getAttribute("connected")){
+            return true;
+        };
+        return false;
     }
 }

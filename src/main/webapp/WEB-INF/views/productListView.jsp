@@ -12,36 +12,45 @@
     <body>
         <jsp:include page="_menu.jsp"></jsp:include>
         <h1 class="text-center mt-5 mb-5">Liste des produits disponibles</h1>
-        <div class="container">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>EAN</th>
-                        <th>Nom</th>
-                        <th>Prix</th>
-                        <th>Modifier</th>
-                        <th>Supprimer</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach items="${productList}" var="product" >
+        <div>
+            <div class="container d-flex justify-content-center">
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td>${product.code}</td>
-                            <td>${product.nom}</td>
-                            <td>${product.prix}€</td>
-                            <td>
-                                <a href="${pageContext.request.contextPath}/UpdateProduct?id=${product.code}" type="button" class="btn navbar-color btn-block">Modifier</a>
-                            </td>
-                            <td>
-                                <a href="${pageContext.request.contextPath}/DeleteProduct?id=${product.code}" type="button" class="btn btn-danger btn-block">Supprimer</a>
-                            </td>
+                            <th>EAN</th>
+                            <th>Nom</th>
+                            <th>Prix</th>
+                            <c:if test="${connected}">
+                                <th>Modifier</th>
+                                <th>Supprimer</th>
+                            </c:if>
                         </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
-            <div class="block-center">
-                <a href="${pageContext.request.contextPath}/CreateProduct" type="button" class="btn navbar-color btn-lg btn-block">Ajouter un produit</a>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${productList}" var="product" >
+                            <tr>
+                                <td>${product.code}</td>
+                                <td>${product.nom}</td>
+                                <td>${product.prix}€</td>
+                                <c:if test="${connected}">
+                                    <td>
+                                        <a href="${pageContext.request.contextPath}/UpdateProduct?id=${product.code}" type="button" class="btn navbar-color btn-block">Modifier</a>
+                                    </td>
+
+                                    <td>
+                                        <a href="${pageContext.request.contextPath}/DeleteProduct?id=${product.code}" type="button" class="btn btn-danger btn-block">Supprimer</a>
+                                    </td>
+                                </c:if>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
             </div>
+            <c:if test="${connected}">
+                <div class="block-center mt-5 d-flex justify-content-center">
+                    <a href="${pageContext.request.contextPath}/CreateProduct" type="button" class="btn navbar-color btn-lg btn-block">Ajouter un produit</a>
+                </div>
+            </c:if>
         </div>
     </body>
 </html>

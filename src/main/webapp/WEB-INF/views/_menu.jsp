@@ -9,17 +9,19 @@
          <div class="collapse navbar-collapse ml-5" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/GetProductsList">Liste des produits</a>
-               <c:if test="${!connected}">
-                  <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/login">Login</a>
-               </c:if>
                <c:if test="${connected}">
                   <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/CreateProduct">Créer un produit</a>
-                  <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/userInfo">Mes infos</a>
-                  <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/disconnect">Se deconnecter</a>
                </c:if>
-               <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/register">S'enregistrer</a>
             </div>
          </div>
+         <c:if test="${!connected}">
+            <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/login">Se connecter</a>
+            <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/register">S'inscrire</a>
+         </c:if>
+         <c:if test="${connected}">
+            <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/userInfo">Mon compte</a>
+            <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/disconnect">Se déconnecter</a>
+         </c:if>
       </div>
    </nav>
 </div>

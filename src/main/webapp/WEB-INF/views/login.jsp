@@ -12,23 +12,22 @@
 </head>
 <body>
 <jsp:include page="_menu.jsp"></jsp:include>
-<h1 class="text-center mt-5 mb-5">Création d'un compte : <%-- {produit} --%></h1>
-<div class="container">
-    <form:form method="POST" action="/login" modelAttribute="utilisateur">
+<h1 class="text-center mt-5 mb-5">Connexion <%-- {produit} --%></h1>
+<div class="container d-flex justify-content-center">
+    <form:form class="form-signin" method="POST" action="/login" modelAttribute="utilisateur">
         <div class="form-row">
-            <div class="col-md-3 mb-3">
+            <div class="mb-3">
                 <form:label path="mail">Email</form:label>
                 <form:input type="email" class="form-control" text="${utilisateur.mail}" name="mail" placeholder="Adresse mail" path="mail"/>
             </div>
-            <div class="col-md-3 mb-3">
+            <div class="mb-3">
                 <form:label path="password">Password</form:label>
                 <form:input type="password" class="form-control" text="${utilisateur.password}" name="password"  placeholder="Password" path="password"/>
             </div>
         </div>
-        <button class="btn btn-primary" type="submit">Me connecter</button>
-        <a href="${pageContext.request.contextPath}/GetProductsList" type="button" class="btn btn-danger btn-block">Annuler la création</a>
+        <a href="${pageContext.request.contextPath}/GetProductsList" type="button" class="btn btn-danger btn-block">Annuler</a>
+        <button class="btn navbar-color" type="submit">Se connecter</button>
     </form:form>
-
 </div>
 </body>
 </html>
