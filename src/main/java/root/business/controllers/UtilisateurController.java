@@ -2,6 +2,9 @@ package root.business.controllers;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -40,8 +43,11 @@ public class UtilisateurController {
     }
 
     @RequestMapping(path="/disconnect", method=RequestMethod.GET)
-    public ModelAndView disconnect(HttpServletRequest request)
-    {
+    public ModelAndView disconnect(HttpServletRequest request, HttpServletResponse response){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if(auth != null){
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
         request.getSession().setAttribute("connected", false);
         return new ModelAndView("redirect:/GetProductsList");
     }
@@ -78,11 +84,6 @@ public class UtilisateurController {
     @RequestMapping(path="/register", method=RequestMethod.POST)
     public ModelAndView createUser(@ModelAttribute("utilisateur") Utilisateur utilisateur, HttpServletRequest request, HttpServletResponse response){
 
-        String firstName = utilisateur.getFirstName();
-        String mail = utilisateur.getMail();
-        String password = utilisateur.getPassword();
-        String userName = utilisateur.getUserName();
-        String billingAddress = utilisateur.getBillingAddress();
         request.getSession().setAttribute("connected", true);
         CookieHandler.createCookie(utilisateur, response);
 
