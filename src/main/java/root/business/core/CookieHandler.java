@@ -18,6 +18,15 @@ public class CookieHandler
         response.addCookie(cookie);
         return cookie ;
     }
+
+    public static Cookie createCookie(String username, HttpServletResponse response)
+    {
+        Cookie cookie = new Cookie("currentUser", username);
+        cookie.setMaxAge(60 * 60);
+        response.addCookie(cookie);
+        return cookie ;
+    }
+
     public static Cookie getCookie(HttpServletRequest request)
     {
         Cookie[] cookies = request.getCookies();

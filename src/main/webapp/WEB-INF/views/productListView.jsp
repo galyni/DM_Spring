@@ -10,6 +10,7 @@
          <title>Liste des produits</title>
      </head>
     <body>
+
         <jsp:include page="_menu.jsp"></jsp:include>
         <h1 class="text-center mt-5 mb-5">Liste des produits disponibles</h1>
         <div>
@@ -20,10 +21,10 @@
                             <th>EAN</th>
                             <th>Nom</th>
                             <th>Prix</th>
-                            <c:if test="${connected}">
+                            <sec:authorize access="hasRole('ROLE_ADMIN')">
                                 <th>Modifier</th>
                                 <th>Supprimer</th>
-                            </c:if>
+                            </sec:authorize>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,7 +33,7 @@
                                 <td>${product.code}</td>
                                 <td>${product.nom}</td>
                                 <td>${product.prix}€</td>
-                                <c:if test="${connected}">
+                                <sec:authorize access="hasRole('ROLE_ADMIN')">
                                     <td>
                                         <a href="${pageContext.request.contextPath}/UpdateProduct?id=${product.code}" type="button" class="btn navbar-color btn-block">Modifier</a>
                                     </td>
@@ -40,7 +41,7 @@
                                     <td>
                                         <a href="${pageContext.request.contextPath}/DeleteProduct?id=${product.code}" type="button" class="btn btn-danger btn-block">Supprimer</a>
                                     </td>
-                                </c:if>
+                                </sec:authorize>
                             </tr>
                         </c:forEach>
                     </tbody>

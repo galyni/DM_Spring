@@ -7,11 +7,10 @@
     - product detail
     - add product form
     - ...
-- Gestion d'erreurs (unicité BDD, objet non en base...)
+- Gestion d'erreurs (unicité BDD, objet non en base...) -> toast d'erreur  + redirection
 - Validation des formulaires (pk prix par 0.1 et pk pas le droit à 36.1 ?)
-- Authentification pour edit, update, delete...
 - Faire une page en cas d'erreur ("Oups nous ne sommes pas parvenus à trouver ce que vous recherchez")
-- Si on a la déter, faire des hash pour les mots de passe
+- Move controllers in a specific package
 
 Front : 
 - Faire un Hover pour les boutons verts de la page d'accueil

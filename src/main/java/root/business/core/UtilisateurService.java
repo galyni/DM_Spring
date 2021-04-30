@@ -3,9 +3,9 @@ package root.business.core;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import root.business.models.Product;
 import root.business.models.Utilisateur;
 
 import javax.persistence.TypedQuery;
@@ -20,6 +20,10 @@ public class UtilisateurService {
 
     @Autowired
     private SessionFactory sessionFactory;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
 
     public UtilisateurService() {
     }
@@ -57,8 +61,10 @@ public class UtilisateurService {
         session.update(utilisateur);
     }
 
+    //TODO : encrypt password
     public void createUtilisateur(Utilisateur utilisateur){
         Session session = sessionFactory.getCurrentSession();
+        utilisateur.setPassword(bCryptPasswordEncoder.encode(utilisateur.getPassword()));
         session.save(utilisateur);
     }
 }
