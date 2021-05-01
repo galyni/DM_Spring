@@ -1,11 +1,9 @@
 package root.business.models;
 
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "utilisateur")
@@ -16,18 +14,29 @@ public class Utilisateur implements Serializable {
     private String password;
     private String billingAddress;
     private String userName;
+    private Set<Role> roles;
 
-
-    public Utilisateur(String firstName, String mail, String password, String billingAddress, String userName) {
+    public Utilisateur(String firstName, String mail, String password, String billingAddress, String userName, Set<Role> roles) {
         this.firstName = firstName;
         this.mail = mail;
         this.password = password;
         this.billingAddress = billingAddress;
         this.userName = userName;
+        this.roles = roles;
     }
 
     public Utilisateur(){
 
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "utilisateurs_roles", joinColumns = @JoinColumn (name = "utilisateur_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     @Basic(optional = false)

@@ -1,12 +1,9 @@
 package root.business.controllers;
 
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,11 +13,9 @@ import root.business.core.UtilisateurService;
 import root.business.models.Utilisateur;
 
 import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class UtilisateurController {
@@ -65,14 +60,17 @@ public class UtilisateurController {
     }
 
     @RequestMapping(path="login", method=RequestMethod.POST)
-    public ModelAndView signIn(@ModelAttribute("utilisateur") Utilisateur utilisateur, HttpServletRequest request, HttpServletResponse response)
+    public String signIn(@ModelAttribute("utilisateur") Utilisateur utilisateur, HttpServletRequest request, HttpServletResponse response, String error)
     {
+        if(error != null)
+            request.setAttribute("error", "login failed");
         if (utilisateur != null) {
             request.getSession().setAttribute("connected", true);
             CookieHandler.createCookie(utilisateur, response );
             //TODO connect user if exist
         }
-        return new ModelAndView("redirect:/GetProductsList");//TODO redirect elsewhere (landing page?)
+//        return new ModelAndView("redirect:/GetProductsList");//TODO redirect elsewhere (landing page?)
+        return "login";
     }
 
     @RequestMapping(path="/register", method= RequestMethod.GET)

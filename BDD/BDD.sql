@@ -18,6 +18,21 @@ USE SpringHibernate;
         PRIMARY KEY (mail)
     );
 
+    CREATE TABLE IF NOT EXISTS `roles` (
+        `id` int(50) NOT NULL AUTO_INCREMENT,
+        `name` varchar(50) NOT NULL,
+        PRIMARY KEY (`id`)
+);
+
+    CREATE TABLE IF NOT EXISTS `utilisateurs_roles` (
+        `role_id` int(50) NOT NULL,
+        `utilisateur_id` varchar(50) NOT NULL,
+        `id` int(50) NOT NULL AUTO_INCREMENT,
+        PRIMARY KEY (`id`),
+        KEY `FK320u2hvrjunk1b68vbhq0b57d` (`role_id`),
+        KEY `FKaw6ttcf57mx9sby1jhl4c1125` (`utilisateur_id`)
+);
+
     INSERT INTO PRODUCT(nom, code , quantite, prix, datePeremption) VALUES ('Banane', '978020137962', 12 , 1.99,'2021-04-20');
     INSERT INTO PRODUCT(nom, code , quantite, prix, datePeremption) VALUES ('Clémentine', '7412589634561', 21 , 1.99,'2021-04-20');
     INSERT INTO PRODUCT(nom, code , quantite, prix, datePeremption) VALUES ('Orange', '369020137962', 3 , 1.99,'2021-04-20');
@@ -30,3 +45,4 @@ USE SpringHibernate;
     INSERT INTO Utilisateur(firstName, mail, password, userName, billingAddress) VALUES ('Quentin', 'froggy@gmail.com','admin', 'froggy', '3 avenue de la saciété');
     INSERT INTO Utilisateur(firstName, mail, password, userName, billingAddress) VALUES ('Frederic', 'orayas@gmail.com','admin', 'testos', '5 boulevard des marins d''eau douce');
 
+    INSERT INTO `roles` (`id`, `name`) VALUES(1, 'ADMIN'), (2, 'USER');
