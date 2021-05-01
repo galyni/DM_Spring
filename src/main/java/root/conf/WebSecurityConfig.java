@@ -27,13 +27,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                     .loginPage("/login")
                     .usernameParameter("mail")
-                    .defaultSuccessUrl("/")
-//                    .loginProcessingUrl("login")
+//                    .defaultSuccessUrl("/")
+                    .loginProcessingUrl("login")
                     .permitAll()
                     .and()
                 .logout()
-                    .logoutUrl("/disconnect")
-                    .logoutSuccessUrl("/")
+                    .logoutSuccessUrl("/disconnect")
                     .permitAll();
     }
 
