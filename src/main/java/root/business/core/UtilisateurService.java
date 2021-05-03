@@ -24,8 +24,6 @@ public class UtilisateurService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @Autowired
-    private RolesService rolesService;
 
     public UtilisateurService() {
     }
