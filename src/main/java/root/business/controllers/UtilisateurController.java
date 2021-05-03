@@ -30,9 +30,9 @@ public class UtilisateurController {
     @RequestMapping(path="/userInfo", method=RequestMethod.GET)
     public ModelAndView goToInfoPage(HttpServletRequest request)
     {
-        if (redirection(request)) {
-            return new ModelAndView("redirect:/login");
-        }
+       // if (redirection(request)) {
+       //     return new ModelAndView("redirect:/login");
+      //  }
         //Utilisateur user = srv.getUtilisateurById(CookieHandler.getCookie(request).getValue()) ;
         return new ModelAndView("userInfo", "utilisateur", srv.getUtilisateurById(CookieHandler.getCookie(request).getValue()) );
     }
@@ -48,8 +48,11 @@ public class UtilisateurController {
     }
 
     @RequestMapping(path="/login", method=RequestMethod.GET)
-    public ModelAndView gotToLoginForm(ServletRequest request)
+    public ModelAndView gotToLoginForm(ServletRequest request, String error)
     {
+        if(error != "") {
+            request.setAttribute("error", "login failed");
+        }
         Utilisateur user = new Utilisateur();
         Cookie cookie = CookieHandler.getCookie((HttpServletRequest)request);
         if(cookie != null)
@@ -59,18 +62,17 @@ public class UtilisateurController {
         return new ModelAndView("login", "utilisateur", user);
     }
 
-    @RequestMapping(path="login", method=RequestMethod.POST)
-    public String signIn(@ModelAttribute("utilisateur") Utilisateur utilisateur, HttpServletRequest request, HttpServletResponse response, String error)
+    @RequestMapping(path="/login", method=RequestMethod.POST)
+    public ModelAndView signIn(@ModelAttribute("utilisateur") Utilisateur utilisateur, HttpServletRequest request, HttpServletResponse response)
     {
-        if(error != null)
-            request.setAttribute("error", "login failed");
+
         if (utilisateur != null) {
             request.getSession().setAttribute("connected", true);
             CookieHandler.createCookie(utilisateur, response );
             //TODO connect user if exist
         }
-//        return new ModelAndView("redirect:/GetProductsList");//TODO redirect elsewhere (landing page?)
-        return "login";
+        return new ModelAndView("redirect:/GetProductsList");//TODO redirect elsewhere (landing page?)
+       // return "login";
     }
 
     @RequestMapping(path="/register", method= RequestMethod.GET)

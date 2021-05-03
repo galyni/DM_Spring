@@ -56,9 +56,9 @@ public class ProductController {
 
     @RequestMapping(path="/CreateProduct", method=RequestMethod.GET)
     public ModelAndView goToProductForm(HttpServletRequest request){
-        if (redirection(request)) {
-            return new ModelAndView("redirect:/GetProductsList");
-        }
+       // if (redirection(request)) {
+        //    return new ModelAndView("redirect:/GetProductsList");
+        //}
         return new ModelAndView("productCreate", "product", new Product());
     }
 
