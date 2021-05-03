@@ -12,9 +12,9 @@
          <div class="collapse navbar-collapse ml-5" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/GetProductsList">Liste des produits</a>
-               <c:if test="${loggedIn}">
+               <sec:authorize access="hasRole('ROLE_ADMIN')">
                   <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/CreateProduct">Créer un produit</a>
-               </c:if>
+               </sec:authorize>
             </div>
          </div>
          <c:if test="${!loggedIn}">

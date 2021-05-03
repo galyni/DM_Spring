@@ -31,6 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //.headers().disable()
                 .authorizeRequests()
                     .antMatchers("/", "/GetProductsList", "/register").permitAll()
+                    .antMatchers("/CreateProduct").hasAuthority("ROLE_ADMIN")
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()

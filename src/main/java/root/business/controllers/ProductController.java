@@ -1,14 +1,11 @@
 package root.business.controllers;
 
-import org.apache.catalina.filters.ExpiresFilter;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import root.business.core.ProductsService;
 import root.business.models.Product;
-import root.business.models.Utilisateur;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.util.List;
 
-//@EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
 @Controller
 public class ProductController {
 
@@ -44,6 +40,7 @@ public class ProductController {
         return result;
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping(path="/DeleteProduct")
     public ModelAndView deleteProduct(String id, HttpServletRequest request)
     {
@@ -54,6 +51,7 @@ public class ProductController {
         return new ModelAndView("redirect:/GetProductsList");
     }
 
+    @Secured("ROLE_ADMIN")
     @RequestMapping(path="/CreateProduct", method=RequestMethod.GET)
     public ModelAndView goToProductForm(HttpServletRequest request){
        // if (redirection(request)) {
@@ -62,7 +60,7 @@ public class ProductController {
         return new ModelAndView("productCreate", "product", new Product());
     }
 
-
+    @Secured("ROLE_ADMIN")
     @RequestMapping(path="/CreateProduct", method=RequestMethod.POST)
     public ModelAndView createProduct(@ModelAttribute("product") Product product, HttpServletRequest request){
         if (redirection(request)) {
@@ -76,6 +74,7 @@ public class ProductController {
     }
 
 
+    @Secured("ROLE_ADMIN")
     @RequestMapping(path="/UpdateProduct", method=RequestMethod.GET)
     public ModelAndView goToProductUpdateForm(String id, HttpServletRequest request){
         if (redirection(request)) {
@@ -85,6 +84,7 @@ public class ProductController {
     }
 
 
+    @Secured("ROLE_ADMIN")
     @RequestMapping(path="/UpdateProduct", method=RequestMethod.POST)
     public ModelAndView updateProduct(@ModelAttribute("product") Product product, HttpServletRequest request){
         if (redirection(request)) {
