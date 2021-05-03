@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import root.business.auth.MyLoginHandler;
 import root.business.auth.MyUserDetailsService;
 
 @Configuration
@@ -19,6 +21,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private MyUserDetailsService userDetailsService;
+
+    @Autowired
+    private AuthenticationSuccessHandler loginHandler;
 
     @Override
     protected void configure(HttpSecurity http ) throws Exception {
@@ -31,7 +36,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                     .loginPage("/login")
                     .usernameParameter("mail")
-                    .defaultSuccessUrl("/")
+                    .successHandler(loginHandler)
+                    //.defaultSuccessUrl("/")
                     //.loginProcessingUrl("/login")
                     .permitAll()
                     .and()
