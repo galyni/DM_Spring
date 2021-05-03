@@ -62,18 +62,18 @@ public class UtilisateurController {
         return new ModelAndView("login", "utilisateur", user);
     }
 
-    @RequestMapping(path="/login", method=RequestMethod.POST)
-    public ModelAndView signIn(@ModelAttribute("utilisateur") Utilisateur utilisateur, HttpServletRequest request, HttpServletResponse response)
-    {
-
-        if (utilisateur != null) {
-            request.getSession().setAttribute("connected", true);
-            CookieHandler.createCookie(utilisateur, response );
-            //TODO connect user if exist
-        }
-        return new ModelAndView("redirect:/GetProductsList");//TODO redirect elsewhere (landing page?)
-       // return "login";
-    }
+//    @RequestMapping(path="/login", method=RequestMethod.POST)
+//    public ModelAndView signIn(@ModelAttribute("utilisateur") Utilisateur utilisateur, HttpServletRequest request, HttpServletResponse response)
+//    {
+//
+//        if (utilisateur != null) {
+//            request.getSession().setAttribute("connected", true);
+//            CookieHandler.createCookie(utilisateur, response );
+//            //TODO connect user if exist
+//        }
+//        return new ModelAndView("redirect:/GetProductsList");//TODO redirect elsewhere (landing page?)
+//       // return "login";
+//    }
 
     @RequestMapping(path="/register", method= RequestMethod.GET)
     public ModelAndView goToRegisterForm(){
