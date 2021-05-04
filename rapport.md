@@ -7,6 +7,8 @@ Spring boot
 
 ORM : Hibernate
 
+Spring security
+
 # Design patterns
 
 Injection de dépendance (par annotations)

@@ -1,22 +1,18 @@
 # TODOs
-
-- Transactional : pk ça marche pas : Nico et David
-- Comptes utilisateurs, login, cookies : Nico (ne pas oublier la deconnexion)  
-- Controllers and service : Nico et David
-- Views : Frédo et Quentin
-    - product detail
-    - add product form
-    - ...
+ 
 - Gestion d'erreurs (unicité BDD, objet non en base...) -> toast d'erreur  + redirection
-- Validation des formulaires (pk prix par 0.1 et pk pas le droit à 36.1 ?)
-- Faire une page en cas d'erreur ("Oups nous ne sommes pas parvenus à trouver ce que vous recherchez")
-- Move controllers in a specific package
+- Redirection quand login à la page prévue
 
 Front : 
+- Info visuelle si produit périmé -> champ date dans la création du produit
+- Validation des formulaires + step pour le prix
 - Faire un Hover pour les boutons verts de la page d'accueil
-- Faire un toast quand le produit vient d'être supprimé
 - Factorisation des pages
-- Se poser la question du mail comme clé primaire
+
+Bonus :
+- Faire une page en cas d'erreur ("Oups nous ne sommes pas parvenus à trouver ce que vous recherchez")
+- Faire un toast quand le produit vient d'être supprimé
+- Confirmation à la suppression du produit
 
 Spring Hibernate project
 =========================
