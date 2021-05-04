@@ -17,7 +17,9 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.SQLNonTransientException;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ProductController {
@@ -34,7 +36,14 @@ public class ProductController {
     public ModelAndView getProductsList(HttpServletRequest request, HttpServletResponse response){
         LocalDate dayDate = LocalDate.now();
         List<Product> productList = srv.getAllProducts();
+        HashMap<String, Integer> hashDatePer = new HashMap<String, Integer>();
+        for(Product product : productList){
+            int joursRestants = srv.getRemainingDays(product.getDatePeremption());
+            hashDatePer.put(product.getCode(), joursRestants);
+
+        }
         ModelAndView result = new ModelAndView("productListView");
+        result.addObject("hashDatePer", hashDatePer);
         result.addObject("productList", productList);
         result.addObject("dayDate", dayDate);
         return result;

@@ -24,6 +24,7 @@
                             <th>Nom</th>
                             <th>Prix</th>
                             <th>Date de P&eacute;remption</th>
+                            <th>Nombre de jours</th>
                             <sec:authorize access="hasRole('ROLE_ADMIN')">
                                 <th>Modifier</th>
                                 <th>Supprimer</th>
@@ -36,15 +37,18 @@
                                 <td>${product.code}</td>
                                 <td>${product.nom}</td>
                                 <td>${product.prix}€</td>
-                                <td>
-
-                                    <c:if test="${product.datePeremption <= dayDate}">
-                                        ${product.datePeremption} ✔
+                                <c:forEach items="${hashDatePer}" var="item" >
+                                    <c:if test="${product.code == item.key}">
+                                        <c:if test="${item.value < - 1}">
+                                            <td>${product.datePeremption}</td>
+                                            <td>✔ Il reste ${item.value * - 1} jours avant péremption.</td>
+                                        </c:if>
+                                        <c:if test="${item.value > 0}">
+                                            <td>${product.datePeremption}</td>
+                                            <td>❌ Périmé depuis ${item.value} jours.</td>
+                                        </c:if>
                                     </c:if>
-                                    <c:if test="${product.datePeremption > dayDate}">
-                                        ${product.datePeremption} ❌
-                                    </c:if>
-                                </td>
+                                </c:forEach>
                                 <sec:authorize access="hasRole('ROLE_ADMIN')">
                                     <td>
                                         <a href="${pageContext.request.contextPath}/UpdateProduct?id=${product.code}" type="button" class="btn navbar-color btn-block">Modifier</a>
