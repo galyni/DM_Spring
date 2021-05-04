@@ -37,18 +37,18 @@
                                 <td>${product.code}</td>
                                 <td>${product.nom}</td>
                                 <td>${product.prix}€</td>
-                                <c:forEach items="${hashDatePer}" var="item" >
-                                    <c:if test="${product.code == item.key}">
-                                        <c:if test="${item.value < - 1}">
+                                        <c:if test="${hashDatePer[product.code] < 0}">
                                             <td>${product.datePeremption}</td>
-                                            <td>❌ Périmé depuis ${item.value * - 1} jours.</td>
+                                            <td>❌ Périmé depuis ${hashDatePer[product.code] * - 1} jours.</td>
                                         </c:if>
-                                        <c:if test="${item.value > 0}">
+                                        <c:if test="${hashDatePer[product.code] > 0}">
                                             <td>${product.datePeremption}</td>
-                                            <td>✔ Il reste ${item.value } jours avant péremption.</td>
+                                            <td>✔ Il reste ${hashDatePer[product.code] } jours avant péremption.</td>
                                         </c:if>
-                                    </c:if>
-                                </c:forEach>
+                                        <c:if test="${hashDatePer[product.code] == 0}">
+                                            <td>${product.datePeremption}</td>
+                                            <td>⚠ Ce produit périme aujourd'hui.</td>
+                                        </c:if>
                                 <sec:authorize access="hasRole('ROLE_ADMIN')">
                                     <td>
                                         <a href="${pageContext.request.contextPath}/UpdateProduct?id=${product.code}" type="button" class="btn navbar-color btn-block">Modifier</a>
