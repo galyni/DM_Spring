@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <form:form method="POST" action="/CreateProduct" modelAttribute="product">
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%--  De base, la balise était :  form:form en haut et form:imput en bas--%>
     <div class="form-row">
         <div class="col-md-6 mb-3">
@@ -22,4 +23,7 @@
         </div>
     </div>
     <button class="btn btn-primary" type="submit">Cr&eacute;er le produit</button>
+    <c:if test="${not empty error}">
+        <p id="error-message">${error}</p>
+    </c:if>
 </form:form>

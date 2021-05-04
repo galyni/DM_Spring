@@ -1,5 +1,6 @@
 package root.business.controllers;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +10,9 @@ import root.business.models.Product;
 
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.SQLNonTransientException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -23,6 +26,7 @@ public class ProductController {
         this.srv = srv;
     }
 
+    // TODO : refactor
     @GetMapping(path="/GetProductsList")
     public ModelAndView getProductsList(HttpServletRequest request){
         List<Product> productList = srv.getAllProducts();
@@ -59,8 +63,17 @@ public class ProductController {
     public ModelAndView createProduct(@ModelAttribute("product") Product product, HttpServletRequest request){
 
         if (product != null) {
-            product.setDatePeremption(LocalDate.now());
-            srv.createProduct(product);
+            try {
+                product.setDatePeremption(LocalDate.now());
+                srv.createProduct(product);
+            } catch (Exception e) {
+                if(e instanceof DataIntegrityViolationException) {
+                    request.setAttribute("error", "Cette référence produit est déjà utilisée.");
+                } else {
+                    request.setAttribute("error", "Une erreur est survenue, veuillez réessayer");
+                }
+                return new ModelAndView("productCreate", "product", product);
+            }
         }
         return new ModelAndView("redirect:/GetProductsList");
     }
