@@ -13,27 +13,31 @@
 <body>
 <jsp:include page="_menu.jsp"></jsp:include>
 <h1 class="text-center mt-5 mb-5">Modification d'un produit du produit : <%-- {produit} --%></h1>
-<div class="container">
-    <form:form method="POST" action="/UpdateProduct" modelAttribute="product">
+<div class="container justify-content-center border border-2 rounded-3 col-md-3">
+    <form:form method="POST" action="/UpdateProduct" modelAttribute="product" class="mt-2 mb-3">
         <div class="form-row">
-            <div class="col-md-6 mb-3">
+            <div class="mb-3">
                 <form:label path="nom">Nom</form:label>
                 <form:input type="text" class="form-control" text="${product.nom}" name="name" placeholder="Nom" path="nom"/>
             </div>
-            <div class="col-md-3 mb-3">
+            <div class="mb-3">
                 <form:label path="code">EAN</form:label>
                 <form:input type="text" class="form-control" text="${product.code}" name="EAN" placeholder="EAN" path="code" readonly="true"/>
             </div>
-            <div class="col-md-3 mb-3">
+            <div class="mb-3">
                 <form:label path="prix">Prix</form:label>
-                <form:input type="number" class="form-control" text="${product.prix}" name="price"  placeholder="Prix" path="prix"/>
+                <form:input type="number" class="form-control" text="${product.prix}" name="price"  placeholder="Prix" path="prix" step="0.01" />
             </div>
-            <div class="col-md-3 mb-3">
+            <div class="mb-3">
                 <form:label path="quantite">Quantit&eacute;</form:label>
                 <form:input type="number" class="form-control" text="${product.quantite}" placeholder="0" path="quantite" />
             </div>
+            <div class="mb-3">
+                <form:label path="datePeremption">Date de p&eacute;remption</form:label>
+                <form:input type="date" class="form-control" path="datePeremption" />
+            </div>
         </div>
-        <button class="btn btn-primary" type="submit">Valider la modification</button>
+        <button class="btn navbar-color" type="submit">Valider</button>
         <a href="${pageContext.request.contextPath}/GetProductsList" type="button" class="btn btn-danger btn-block">Annuler la modification</a>
     </form:form>
 

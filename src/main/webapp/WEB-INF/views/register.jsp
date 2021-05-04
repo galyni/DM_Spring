@@ -37,8 +37,8 @@
                 <form:input type="password" class="form-control" text="${utilisateur.password}" name="password"  placeholder="Password" path="password"/>
             </div>
         </div>
-        <a href="${pageContext.request.contextPath}/GetProductsList" type="button" class="btn btn-danger btn-block">Annuler la création</a>
         <button class="btn navbar-color" type="submit">Valider la création du compte</button>
+        <a href="${pageContext.request.contextPath}/GetProductsList" type="button" class="btn btn-danger btn-block">Annuler la création</a>
     </form:form>
 
 </div>

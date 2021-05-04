@@ -1,5 +1,6 @@
 package root.business.core;
 
+import org.apache.tomcat.jni.Local;
 import root.business.models.Product;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,6 +12,8 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 @Service
@@ -61,5 +64,11 @@ public class ProductsService {
     public void createProduct(Product product){
         Session session = sessionFactory.getCurrentSession();
         session.save(product);
+    }
+
+    public static int getRemainingDays(LocalDate datePer){
+        LocalDate dayDate = LocalDate.now();
+        Period period = Period.between(datePer, dayDate);
+        return period.getDays();
     }
 }

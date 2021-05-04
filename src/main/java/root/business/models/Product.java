@@ -1,5 +1,7 @@
 package root.business.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,6 +16,7 @@ public class Product {
     private String code;
     private double prix;
     private int quantite;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate datePeremption;
 
     @Basic(optional = false)

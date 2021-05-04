@@ -1,5 +1,6 @@
 package root.business.controllers;
 
+import org.apache.tomcat.jni.Local;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -9,7 +10,9 @@ import root.business.core.ProductsService;
 import root.business.models.Product;
 
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.SQLNonTransientException;
@@ -28,17 +31,19 @@ public class ProductController {
 
     // TODO : refactor
     @GetMapping(path="/GetProductsList")
-    public ModelAndView getProductsList(HttpServletRequest request){
+    public ModelAndView getProductsList(HttpServletRequest request, HttpServletResponse response){
+        LocalDate dayDate = LocalDate.now();
         List<Product> productList = srv.getAllProducts();
         ModelAndView result = new ModelAndView("productListView");
         result.addObject("productList", productList);
+        result.addObject("dayDate", dayDate);
         return result;
     }
 
     @GetMapping(path="/")
     public ModelAndView homePage(){
         List<Product> productList = srv.getAllProducts();
-        ModelAndView result = new ModelAndView("productListView");
+        ModelAndView result = new ModelAndView("homeView");
         result.addObject("productList", productList);
         return result;
     }
@@ -64,7 +69,7 @@ public class ProductController {
 
         if (product != null) {
             try {
-                product.setDatePeremption(LocalDate.now());
+                //product.setDatePeremption(LocalDate.now());
                 srv.createProduct(product);
             } catch (Exception e) {
                 if(e instanceof DataIntegrityViolationException) {
@@ -92,7 +97,6 @@ public class ProductController {
     public ModelAndView updateProduct(@ModelAttribute("product") Product product, HttpServletRequest request){
 
         if (product != null) {
-            product.setDatePeremption(LocalDate.now());
             srv.updateProduct(product);
         }
         return new ModelAndView("redirect:/GetProductsList");

@@ -1,3 +1,4 @@
+<%@ page import="root.business.core.ProductsService" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -22,6 +23,7 @@
                             <th>EAN</th>
                             <th>Nom</th>
                             <th>Prix</th>
+                            <th>Date de P&eacute;remption</th>
                             <sec:authorize access="hasRole('ROLE_ADMIN')">
                                 <th>Modifier</th>
                                 <th>Supprimer</th>
@@ -34,6 +36,15 @@
                                 <td>${product.code}</td>
                                 <td>${product.nom}</td>
                                 <td>${product.prix}€</td>
+                                <td>
+
+                                    <c:if test="${product.datePeremption <= dayDate}">
+                                        ${product.datePeremption} ✔
+                                    </c:if>
+                                    <c:if test="${product.datePeremption > dayDate}">
+                                        ${product.datePeremption} ❌
+                                    </c:if>
+                                </td>
                                 <sec:authorize access="hasRole('ROLE_ADMIN')">
                                     <td>
                                         <a href="${pageContext.request.contextPath}/UpdateProduct?id=${product.code}" type="button" class="btn navbar-color btn-block">Modifier</a>

@@ -25,8 +25,8 @@
                 <form:input type="password" class="form-control" text="${utilisateur.password}" name="password"  placeholder="Password" path="password"/>
             </div>
         </div>
-        <a href="${pageContext.request.contextPath}/GetProductsList" type="button" class="btn btn-danger btn-block">Annuler</a>
         <button class="btn navbar-color" type="submit">Se connecter</button>
+        <a href="${pageContext.request.contextPath}/GetProductsList" type="button" class="btn btn-danger btn-block">Annuler</a>
     </form:form>
 </div>
 </body>
