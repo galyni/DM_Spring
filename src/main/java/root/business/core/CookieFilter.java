@@ -41,11 +41,11 @@ public class CookieFilter implements Filter {
         HttpSession session = req.getSession();
  
 	// To retrieve / store cookies :
-	    Cookie cookie = CookieHandler.getCookie(req);
-	    if(cookie != null)
-        {
-            // TODO @Nico fais ce que tu veux des cookies ici
-        }
+//	    Cookie cookie = CookieHandler.getCookie(req);
+//	    if(cookie != null)
+//        {
+//            // TODO @Nico fais ce que tu veux des cookies ici
+//        }
 	//
 	// new Cookie(...)
 	// response.addCookie(...)

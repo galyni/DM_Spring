@@ -16,6 +16,7 @@ public class Utilisateur implements Serializable {
     private String password;
     private String billingAddress;
     private String userName;
+    private String role;
 
 
     public Utilisateur(String firstName, String mail, String password, String billingAddress, String userName) {
@@ -63,4 +64,11 @@ public class Utilisateur implements Serializable {
     public String getBillingAddress(){return billingAddress;}
     public void setBillingAddress(String billingAddress){this.billingAddress = billingAddress;}
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }
