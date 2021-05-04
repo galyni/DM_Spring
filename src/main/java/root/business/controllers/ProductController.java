@@ -40,7 +40,6 @@ public class ProductController {
         for(Product product : productList){
             int joursRestants = srv.getRemainingDays(product.getDatePeremption());
             hashDatePer.put(product.getCode(), joursRestants);
-
         }
         ModelAndView result = new ModelAndView("productListView");
         result.addObject("hashDatePer", hashDatePer);

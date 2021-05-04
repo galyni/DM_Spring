@@ -27,7 +27,7 @@
                     </div>
                     <div class="mb-3">
                         <form:label path="prix">Prix</form:label>
-                        <form:input type="number" class="form-control" name="price"  placeholder="Prix" path="prix" step="0.01" />
+                        <form:input type="number" class="form-control" name="price"  placeholder="Prix" path="prix" step="0.01" min="0"/>
                             <%--            A voir pour enlever le form control du prix, il n'y était pas avant--%>
                     </div>
                     <div class="mb-3">

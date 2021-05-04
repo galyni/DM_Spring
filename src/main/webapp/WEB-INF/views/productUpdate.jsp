@@ -26,7 +26,7 @@
             </div>
             <div class="mb-3">
                 <form:label path="prix">Prix</form:label>
-                <form:input type="number" class="form-control" text="${product.prix}" name="price"  placeholder="Prix" path="prix" step="0.01" />
+                <form:input type="number" class="form-control" text="${product.prix}" name="price"  placeholder="Prix" path="prix" step="0.01" min="0" />
             </div>
             <div class="mb-3">
                 <form:label path="quantite">Quantit&eacute;</form:label>

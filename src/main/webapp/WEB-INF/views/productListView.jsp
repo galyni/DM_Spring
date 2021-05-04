@@ -41,11 +41,11 @@
                                     <c:if test="${product.code == item.key}">
                                         <c:if test="${item.value < - 1}">
                                             <td>${product.datePeremption}</td>
-                                            <td>✔ Il reste ${item.value * - 1} jours avant péremption.</td>
+                                            <td>❌ Périmé depuis ${item.value * - 1} jours.</td>
                                         </c:if>
                                         <c:if test="${item.value > 0}">
                                             <td>${product.datePeremption}</td>
-                                            <td>❌ Périmé depuis ${item.value} jours.</td>
+                                            <td>✔ Il reste ${item.value } jours avant péremption.</td>
                                         </c:if>
                                     </c:if>
                                 </c:forEach>
