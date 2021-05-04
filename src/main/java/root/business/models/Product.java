@@ -12,7 +12,7 @@ public class Product {
 
     private String nom;
     private String code;
-    double prix;
+    private double prix;
     private int quantite;
     private LocalDate datePeremption;
 

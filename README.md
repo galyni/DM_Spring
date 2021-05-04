@@ -1,6 +1,5 @@
 # TODOs
  
-- Gestion d'erreurs (unicité BDD, objet non en base...) -> toast d'erreur  + redirection
 - Redirection quand login à la page prévue
 
 Front : 

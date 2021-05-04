@@ -8,12 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import root.business.models.Utilisateur;
 
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import java.util.List;
-
 @Service
 @Transactional
 public class UtilisateurService {
@@ -26,22 +20,6 @@ public class UtilisateurService {
 
 
     public UtilisateurService() {
-    }
-
-    public void test(){
-        System.out.println("On est contents");
-    }
-
-    public List<Utilisateur> getAllUtilisateurs(){
-        Session session = sessionFactory.getCurrentSession();
-        CriteriaBuilder cb = session.getCriteriaBuilder();
-        CriteriaQuery<Utilisateur> cq = cb.createQuery(Utilisateur.class);
-        Root<Utilisateur> rootEntry = cq.from(Utilisateur.class);
-        CriteriaQuery<Utilisateur> all = cq.select(rootEntry);
-
-        TypedQuery<Utilisateur> allQuery = session.createQuery(all);
-        return allQuery.getResultList();
-
     }
 
     public Utilisateur getUtilisateurById(String mail){
@@ -61,7 +39,6 @@ public class UtilisateurService {
         session.update(utilisateur);
     }
 
-    //TODO : encrypt password
     public void createUtilisateur(Utilisateur utilisateur){
         Session session = sessionFactory.getCurrentSession();
         utilisateur.setPassword(bCryptPasswordEncoder.encode(utilisateur.getPassword()));

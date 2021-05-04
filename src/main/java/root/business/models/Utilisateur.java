@@ -18,7 +18,6 @@ public class Utilisateur implements Serializable {
     private String userName;
     private String role;
 
-
     public Utilisateur(String firstName, String mail, String password, String billingAddress, String userName) {
         this.firstName = firstName;
         this.mail = mail;
@@ -28,7 +27,6 @@ public class Utilisateur implements Serializable {
     }
 
     public Utilisateur(){
-
     }
 
     @Basic(optional = false)
@@ -64,10 +62,10 @@ public class Utilisateur implements Serializable {
     public String getBillingAddress(){return billingAddress;}
     public void setBillingAddress(String billingAddress){this.billingAddress = billingAddress;}
 
+    @Basic(optional = true)
     public String getRole() {
         return role;
     }
-
     public void setRole(String role) {
         this.role = role;
     }

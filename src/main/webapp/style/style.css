@@ -28,3 +28,8 @@ div a.boutons-menu:hover{
     background-color: #5ac69a;
     font-weight: bold;
 }
+
+#error-message {
+    color: red;
+    margin-top: 2em;
+}

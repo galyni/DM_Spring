@@ -3,7 +3,7 @@
 
 # Choix techniques
 
-Spring boot
+Spring boot + MVC + jstl
 
 ORM : Hibernate
 
