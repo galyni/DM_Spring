@@ -11,25 +11,25 @@
                 <div class="form-row">
                     <div class="mb-3">
                         <form:label path="nom">Nom</form:label>
-                        <form:input type="text" class="form-control" name="name" placeholder="Nom" path="nom"/>
+                        <form:input type="text" class="form-control" name="name" placeholder="Nom" path="nom" required="true"/>
                     </div>
                     <div class="mb-3">
                         <form:label path="code">EAN</form:label>
-                        <form:input type="text" class="form-control" name="EAN" placeholder="EAN" path="code"/>
+                        <form:input type="text" class="form-control" name="EAN" placeholder="EAN" path="code" required="true"/>
                     </div>
                     <div class="mb-3">
                         <form:label path="prix">Prix</form:label>
-                        <form:input type="number" class="form-control" name="price"  placeholder="Prix" path="prix" step="0.01" min="0"/>
+                        <form:input type="number" class="form-control" name="price"  placeholder="Prix" path="prix" step="0.01" min="0" required="true"/>
                             <%--            A voir pour enlever le form control du prix, il n'y était pas avant--%>
                     </div>
                     <div class="mb-3">
                         <form:label path="quantite">Quantit&eacute;</form:label>
-                        <form:input type="number" class="form-control" placeholder="0" path="quantite" />
+                        <form:input type="number" class="form-control" placeholder="0" path="quantite" required="true" />
                             <%--            J'ai changé le quantity en quantité dans le path--%>
                     </div>
                     <div class="mb-3">
                         <form:label path="datePeremption">Date de p&eacute;remption</form:label>
-                        <form:input type="date" class="form-control" path="datePeremption" />
+                        <form:input type="date" class="form-control" path="datePeremption" required="true" />
                     </div>
                 </div>
                 <div class="text-align-center">
