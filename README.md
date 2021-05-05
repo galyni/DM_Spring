@@ -1,10 +1,6 @@
 # TODOs
- 
-- Redirection quand login à la page prévue
 
 Front : 
-- Info visuelle si produit périmé -> champ date dans la création du produit
-- Validation des formulaires + step pour le prix
 - Faire un Hover pour les boutons verts de la page d'accueil
 
 Bonus :

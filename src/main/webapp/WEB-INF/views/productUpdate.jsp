@@ -4,7 +4,7 @@
 
 <t:common title="Modification d'un Produit">
     <jsp:body>
-<h1 class="text-center mt-5 mb-5">Modification d'un produit du produit : <%-- {produit} --%></h1>
+<h1 class="text-center mt-5 mb-5">Modification d'un produit</h1>
 <div class="container justify-content-center border border-2 rounded-3 col-md-3">
     <form:form method="POST" action="/UpdateProduct" modelAttribute="product" class="mt-2 mb-3">
         <div class="form-row">
