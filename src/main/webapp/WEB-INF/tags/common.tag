@@ -27,6 +27,9 @@
                     </sec:authorize>
                 </div>
             </div>
+            <c:if test="${not empty prenom}">
+                <span>Bonjour ${prenom}</span>
+            </c:if>
             <c:if test="${!loggedIn}">
                 <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/login">Se connecter</a>
                 <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/register">S'inscrire</a>

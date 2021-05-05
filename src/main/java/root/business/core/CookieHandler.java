@@ -30,12 +30,14 @@ public class CookieHandler
     public static Cookie getCookie(HttpServletRequest request)
     {
         Cookie[] cookies = request.getCookies();
-        for(Cookie cookie : cookies)
-        {
-            if(cookie.getName().equals("currentUser"))
+        if(cookies != null){
+            for(Cookie cookie : cookies)
             {
-                request.setAttribute("connexion", true);
-                return cookie;
+                if(cookie.getName().equals("currentUser"))
+                {
+                    request.setAttribute("connexion", true);
+                    return cookie;
+                }
             }
         }
         return null;
