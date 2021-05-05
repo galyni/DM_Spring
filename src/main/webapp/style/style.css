@@ -33,3 +33,13 @@ div a.boutons-menu:hover{
     color: red;
     margin-top: 2em;
 }
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}

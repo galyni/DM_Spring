@@ -37,12 +37,9 @@ public class ProductsService {
         CriteriaQuery<Product> cq = cb.createQuery(Product.class);
         Root<Product> rootEntry = cq.from(Product.class);
         CriteriaQuery<Product> all = cq.select(rootEntry);
-
         TypedQuery<Product> allQuery = session.createQuery(all);
         return allQuery.getResultList();
-
     }
-
 
     public Product getProductById(String id){
         Session session = sessionFactory.getCurrentSession();
