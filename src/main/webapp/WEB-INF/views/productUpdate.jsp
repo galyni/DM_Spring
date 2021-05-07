@@ -9,23 +9,23 @@
     <form:form method="POST" action="/UpdateProduct" modelAttribute="product" class="mt-2 mb-3">
         <div class="form-row">
             <div class="mb-3">
-                <form:label path="nom">Nom</form:label>
+                <form:label class="form-label" path="nom">Nom</form:label>
                 <form:input type="text" class="form-control" text="${product.nom}" name="name" placeholder="Nom" path="nom" required="true"/>
             </div>
             <div class="mb-3">
-                <form:label path="code">EAN</form:label>
+                <form:label class="form-label" path="code">EAN</form:label>
                 <form:input type="text" class="form-control" text="${product.code}" name="EAN" placeholder="EAN" path="code" readonly="true"/>
             </div>
             <div class="mb-3">
-                <form:label path="prix">Prix</form:label>
+                <form:label class="form-label" path="prix">Prix</form:label>
                 <form:input type="number" class="form-control" text="${product.prix}" name="price"  placeholder="Prix" path="prix" step="0.01" min="0" required="true" />
             </div>
             <div class="mb-3">
-                <form:label path="quantite">Quantit&eacute;</form:label>
+                <form:label class="form-label" path="quantite">Quantit&eacute;</form:label>
                 <form:input type="number" class="form-control" text="${product.quantite}" placeholder="0" path="quantite" required="true" />
             </div>
             <div class="mb-3">
-                <form:label path="datePeremption">Date de p&eacute;remption</form:label>
+                <form:label class="form-label" path="datePeremption">Date de p&eacute;remption</form:label>
                 <form:input type="date" class="form-control" path="datePeremption" required="true" />
             </div>
         </div>

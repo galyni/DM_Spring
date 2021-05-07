@@ -27,17 +27,24 @@
                     </sec:authorize>
                 </div>
             </div>
-            <c:if test="${not empty prenom}">
-                <span>Bonjour ${prenom}</span>
-            </c:if>
-            <c:if test="${!loggedIn}">
-                <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/login">Se connecter</a>
-                <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/register">S'inscrire</a>
-            </c:if>
-            <c:if test="${loggedIn}">
-                <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/userInfo">Mon compte</a>
-                <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/disconnect">Se déconnecter</a>
-            </c:if>
+
+            <c:choose>
+                <c:when test="${loggedIn}">
+                    <li class="nav-item dropdown list-unstyled">
+                        <a class="nav-link dropdown-toggle text-light font-weight-bold boutons-menu" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Connect&eacute;<c:if test="${not empty prenom}"> en tant que : ${prenom}</c:if>
+                        </a>
+                        <ul class="dropdown-menu navbar-color" aria-labelledby="navbarDropdown">
+                            <li><a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/userInfo">Mon compte</a></li>
+                            <li><a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/disconnect">Se déconnecter</a></li>
+                        </ul>
+                    </li>
+                </c:when>
+                <c:otherwise>
+                    <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/login">Se connecter</a>
+                    <a class="nav-link text-light font-weight-bold boutons-menu" href="${pageContext.request.contextPath}/register">S'inscrire</a>
+                </c:otherwise>
+            </c:choose>
         </div>
     </nav>
 </div>

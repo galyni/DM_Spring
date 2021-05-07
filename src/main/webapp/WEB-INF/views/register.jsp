@@ -9,23 +9,23 @@
     <form:form method="POST" action="/register" modelAttribute="utilisateur">
         <div class="form-row">
             <div class="mb-3">
-                <form:label path="userName">Pseudo</form:label>
+                <form:label class="form-label" path="userName">Pseudo</form:label>
                 <form:input type="text" class="form-control" text="${utilisateur.userName}" name="userName"  placeholder="Pseudonyme" path="userName"/>
             </div>
             <div class="mb-3">
-                <form:label path="firstName">Prenom</form:label>
+                <form:label class="form-label" path="firstName">Prenom</form:label>
                 <form:input type="text" class="form-control" text="${utilisateur.firstName}" name="firstName" placeholder="Prenom" path="firstName"/>
             </div>
             <div class="mb-3">
-                <form:label path="mail">Email</form:label>
+                <form:label class="form-label" path="mail">Email</form:label>
                 <form:input type="email" class="form-control" text="${utilisateur.mail}" name="mail" placeholder="Adresse mail" path="mail"/>
             </div>
             <div class="mb-3">
-                <form:label path="billingAddress">Adresse postale</form:label>
+                <form:label class="form-label" path="billingAddress">Adresse postale</form:label>
                 <form:input type="text" class="form-control" text="${utilisateur.billingAddress}" name="billingAddress" placeholder="Adresse postale" path="billingAddress"/>
             </div>
             <div class="mb-3">
-                <form:label path="password">Password</form:label>
+                <form:label class="form-label" path="password">Password</form:label>
                 <form:input type="password" class="form-control" text="${utilisateur.password}" name="password"  placeholder="Password" path="password"/>
             </div>
         </div>
