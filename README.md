@@ -12,3 +12,20 @@ Spring Hibernate project
 - lancer la commande './gradlew bootRun' depuis la racine du projet
 - Utiliser l'URL : http://localhost:8080
 
+# Comptes à utiliser pour réaliser les tests
+
+Compte simple : 
+
+Email : comptetest@test.com
+Mot de passe : test
+
+Compte Administrateur : 
+
+Email : compteadmintest@test.com
+Mot de passe : admin
+
+# Remarques 
+
+Nous avions utilisé la classe cookieFilter pour connecter automatiquement les utilisateurs, mais nous avons décider d'enlever ce comportement 
+au moment de la mise en place de SpringSecurity. 
+
