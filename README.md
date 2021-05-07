@@ -1,25 +1,14 @@
-# TODOs
-
-Front : 
-- Faire un Hover pour les boutons verts de la page d'accueil
-
-Bonus :
-- Faire une page en cas d'erreur ("Oups nous ne sommes pas parvenus à trouver ce que vous recherchez")
-- Faire un toast quand le produit vient d'être supprimé
-- Confirmation à la suppression du produit
-
 Spring Hibernate project
 =========================
 
 # Prérequis : 
-- Utiliser WAMP ou XAMP 
-- Un IDE capable d'utiliser Glassfish ou Tomcat 
+- Utiliser WAMP ou XAMP
 - Git 
 
 # Instructions pour lancer le site : 
 
 - Dans un CMD, lancer la commande : git clone https://github.com/galyni/DM_Spring.git
-- Ouvrir le dossier avec Intelij
-- Une fois Intelij lancé, dans le bandeau de droite appelé "Gradle", lancer "bootRun"
+- Importer la base de donnée (MySQL) à l'aide du script (BDD/BDD.sql). 
+- lancer la commande './gradlew bootRun' depuis la racine du projet
 - Utiliser l'URL : http://localhost:8080
 
