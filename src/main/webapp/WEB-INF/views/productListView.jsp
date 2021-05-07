@@ -1,6 +1,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <t:common title="Liste des produits">
@@ -28,16 +29,15 @@
                                 <td>${product.code}</td>
                                 <td>${product.nom}</td>
                                 <td>${product.prix}€</td>
+                                        <fmt:parseDate value="${product.datePeremption}" pattern="yyyy-MM-dd" var="parsedDate" type="date" />
+                                        <td><fmt:formatDate pattern = "dd-MM-yyyy" value = "${parsedDate}" /></td>
                                         <c:if test="${hashDatePer[product.code] < 0}">
-                                            <td>${product.datePeremption}</td>
                                             <td>❌ Périmé depuis ${hashDatePer[product.code] * - 1} jours.</td>
                                         </c:if>
                                         <c:if test="${hashDatePer[product.code] > 0}">
-                                            <td>${product.datePeremption}</td>
                                             <td>✔ Il reste ${hashDatePer[product.code] } jours avant péremption.</td>
                                         </c:if>
                                         <c:if test="${hashDatePer[product.code] == 0}">
-                                            <td>${product.datePeremption}</td>
                                             <td>⚠ Ce produit périme aujourd'hui.</td>
                                         </c:if>
                                 <sec:authorize access="hasRole('ROLE_ADMIN')">
