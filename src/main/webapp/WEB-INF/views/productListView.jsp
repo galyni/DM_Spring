@@ -15,6 +15,7 @@
                             <th>EAN</th>
                             <th>Nom</th>
                             <th>Prix</th>
+                            <th>Quantit&eacute;</th>
                             <th>Date de P&eacute;remption</th>
                             <th>Nombre de jours</th>
                             <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -29,6 +30,7 @@
                                 <td>${product.code}</td>
                                 <td>${product.nom}</td>
                                 <td>${product.prix}€</td>
+                                <td>${product.quantite}</td>
                                         <fmt:parseDate value="${product.datePeremption}" pattern="yyyy-MM-dd" var="parsedDate" type="date" />
                                         <td><fmt:formatDate pattern = "dd-MM-yyyy" value = "${parsedDate}" /></td>
                                         <c:if test="${hashDatePer[product.code] < 0}">
