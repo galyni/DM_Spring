@@ -16,6 +16,8 @@ public class Utilisateur implements Serializable {
     private String password;
     private String billingAddress;
     private String userName;
+    // si les rôles sont fixes et liés à l'application, il peut être intéressant d'utiliser un enum pour faciliter
+    // l'intégration dans le code java
     private String role;
 
     public Utilisateur(String firstName, String mail, String password, String billingAddress, String userName) {

@@ -24,10 +24,10 @@ public class MyUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
         Utilisateur utilisateur = srv.getUtilisateurById(mail);
         if (utilisateur == null) {
-            throw new UsernameNotFoundException(mail);
+            throw new UsernameNotFoundException(mail); // TB
         }
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        if (utilisateur.getRole() != null && utilisateur.getRole().equals("ADMIN")) {
+        if (utilisateur.getRole() != null && utilisateur.getRole().equals("ADMIN")) { // voir commentaire enum dans classe Utilisateur
             grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
         }
 

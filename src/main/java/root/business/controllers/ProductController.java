@@ -2,6 +2,7 @@ package root.business.controllers;
 
 import org.apache.tomcat.jni.Local;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,8 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Controller
 public class ProductController {
@@ -56,7 +59,7 @@ public class ProductController {
         return result;
     }
 
-    @Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN") // ROLE_ADMIN pourrait être un enum des rôles, ou une constante
     @GetMapping(path="/DeleteProduct")
     public ModelAndView deleteProduct(String id, HttpServletRequest request)
     {
@@ -79,13 +82,21 @@ public class ProductController {
             try {
                 //product.setDatePeremption(LocalDate.now());
                 srv.createProduct(product);
+
+                // JAMAIS d'instanceof sur une Exception ! Utiliser plutôt le pattern matching du catch.
+                // On pourrait par exemple utiliser :
+            } catch (DataIntegrityViolationException e) {
+                LOG.log(Level.FINE, "Cannot create product - reference already set " + product, e);
+                request.setAttribute("error", "Cette référence produit est déjà utilisée: " + product.getCode());
+                ModelAndView result = new ModelAndView("productCreate", "product", product);
+                result.setStatus(HttpStatus.CONFLICT);
+                return result;
             } catch (Exception e) {
-                if(e instanceof DataIntegrityViolationException) {
-                    request.setAttribute("error", "Cette référence produit est déjà utilisée.");
-                } else {
-                    request.setAttribute("error", "Une erreur est survenue, veuillez réessayer");
-                }
-                return new ModelAndView("productCreate", "product", product);
+                LOG.log(Level.WARNING, "Unable to create product " + product, e);
+                request.setAttribute("error", "Une erreur est survenue, veuillez réessayer");
+                ModelAndView result = new ModelAndView("productCreate", "product", product);
+                result.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+                return result;
             }
         }
         return new ModelAndView("redirect:/GetProductsList");
@@ -104,11 +115,19 @@ public class ProductController {
     @RequestMapping(path="/UpdateProduct", method=RequestMethod.POST)
     public ModelAndView updateProduct(@ModelAttribute("product") Product product, HttpServletRequest request){
 
-        if (product != null) {
-            srv.updateProduct(product);
+        // est-il vraiment normal de ne pas avoir de product ?
+        if (product == null) {
+            LOG.warning("No product provided !"); // likely a bug
+            ModelAndView result = new ModelAndView("productUpdate");
+            result.setStatus(HttpStatus.BAD_REQUEST);
+            return result;
         }
+        //if (product != null) {
+            srv.updateProduct(product);
+        //}
         return new ModelAndView("redirect:/GetProductsList");
     }
 
+    private static Logger LOG = Logger.getLogger(ProductController.class.getName());
 
 }

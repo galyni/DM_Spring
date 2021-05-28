@@ -63,7 +63,7 @@ public class ProductsService {
         session.save(product);
     }
 
-    public int getRemainingDays(LocalDate datePer){
+    public static int getRemainingDays(LocalDate datePer){ // indépendant de l'instance
         LocalDate dayDate = LocalDate.now();
         Period period = Period.between(dayDate, datePer);
         return period.getDays();

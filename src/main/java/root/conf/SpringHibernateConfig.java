@@ -31,8 +31,10 @@ public class SpringHibernateConfig {
     public DataSource dataSource() {
 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/springhibernate?useLegacyDatetimeCode=false&serverTimezone=CET");
+        //dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        ////dataSource.setUrl("jdbc:mysql://localhost:3306/springhibernate?useLegacyDatetimeCode=false&serverTimezone=CET");
+        dataSource.setDriverClassName("org.h2.Driver"); // pour correction
+        dataSource.setUrl("jdbc:h2:mem:db;DB_CLOSE_DELAY=-1");
         dataSource.setUsername("root");
         dataSource.setPassword("");
 
@@ -52,7 +54,9 @@ public class SpringHibernateConfig {
                 //"hibernate.hbm2ddl.auto", "create-drop");
                 "hibernate.hbm2ddl.auto", "update");
         hibernateProperties.setProperty(
-                "hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+                //"hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+                "hibernate.dialect", "org.hibernate.dialect.H2Dialect"); // pour correction
+
 
         // Bind one session per request : configures SessionFactory.useCurrentSession()
         // Disabled because it interferes with hibernate session management
