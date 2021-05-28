@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private AuthenticationSuccessHandler loginHandler;
 
     @Override
-    protected void configure(HttpSecurity http ) throws Exception {
+    protected void configure(HttpSecurity http ) throws Exception { //TB
         http
                 //.headers().disable()
                 .authorizeRequests()

@@ -27,9 +27,15 @@ public class MyLoginHandler extends SavedRequestAwareAuthenticationSuccessHandle
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         String username = request.getParameter("mail");
+        // est-il normal d'un point de vue métier que username soit null ?
+        // si non, on peut :
+        // - soit logger l'erreur
+        // - soit (a priori meilleur) renvoyer une exception
         if (username != null) {
             CookieHandler.createCookie(username, response );
             Utilisateur utilisateur = srv.getUtilisateurById(username);
+            // même question : est-il normal de ne pas trouver d'utilisateur ? il peut êtr plus intéressant de laisser
+            // crasher le code pour le corriger facilement, plutôt que de passer l'erreur sous silence
             if(utilisateur != null) {
                 request.getSession().setAttribute("prenom", utilisateur.getFirstName());
             }

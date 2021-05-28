@@ -16,6 +16,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.logging.Logger;
 
 @Controller
 public class UtilisateurController {
@@ -36,6 +37,11 @@ public class UtilisateurController {
     @RequestMapping(path="/disconnect", method=RequestMethod.GET)
     public ModelAndView disconnect(HttpServletRequest request, HttpServletResponse response){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        // Ouch ! passer sous silence un problème de déconnexion peut être critique !!
+        if (auth == null) {
+            LOG.severe("Cannot disconnect - no authentication context !");
+            // il pourrait être intéressant d'arrêter l'application suite à cette erreur
+        }
         if(auth != null){
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
@@ -46,6 +52,8 @@ public class UtilisateurController {
     @RequestMapping(path="/login", method=RequestMethod.GET)
     public ModelAndView gotToLoginForm(ServletRequest request, String error)
     {
+        // JAMAIS de '==' sur des objets en Java (y compris les String) : comparaison de références et/ non de contenu
+        // => votre IDE doit détecter ces erreurs!
         if(error != "") {
             request.setAttribute("error", "login failed");
         }
@@ -71,11 +79,13 @@ public class UtilisateurController {
         request.getSession().setAttribute("connected", true);
         CookieHandler.createCookie(utilisateur, response);
 
-        if (utilisateur != null) {
+        if (utilisateur != null) { // d'après mon IDE, ce check est inutile (et donc faux)
 
             srv.createUtilisateur(utilisateur);
         }
         return new ModelAndView("redirect:/GetProductsList");
     }
+
+    private static Logger LOG = Logger.getLogger(ProductController.class.getName());
 
 }

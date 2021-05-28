@@ -41,7 +41,7 @@ public class UtilisateurService {
 
     public void createUtilisateur(Utilisateur utilisateur){
         Session session = sessionFactory.getCurrentSession();
-        utilisateur.setPassword(bCryptPasswordEncoder.encode(utilisateur.getPassword()));
+        utilisateur.setPassword(bCryptPasswordEncoder.encode(utilisateur.getPassword())); //TB
         session.save(utilisateur);
     }
 }
